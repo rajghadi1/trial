@@ -1,6 +1,6 @@
 from flask import Flask, request, render_template, flash, redirect, url_for
 import numpy as np
-from pickle4 import pickle
+import pickle
 from sklearn.preprocessing import MinMaxScaler
 from keras.preprocessing.image import load_img
 from keras.preprocessing.image import img_to_array
