@@ -1,0 +1,1002 @@
+<html>
+<head>
+      <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+body{
+     word-wrap: break-word;
+     -webkit-hyphens: auto;
+     -moz-hyphens: auto;
+     -ms-hyphens: auto;
+     -o-hyphens: auto;
+     hyphens: auto;
+}
+
+
+        .resultL{
+
+            padding-top: 150px;
+            width:100%;
+            height: 300px;
+            color: white;
+            margin-top:10px;
+            background-color:rgb(0,0,0);
+        }
+
+.slidecontainer {
+  width: 100%; /* Width of the outside container */
+}
+
+/* The slider itself */
+.slider {
+  -webkit-appearance: none;  /* Override default CSS styles */
+  appearance: none;
+  width: 100%; /* Full-width */
+  height: 15px; /* Specified height */
+  background: #2574A9; /* Grey background */
+  outline: none; /* Remove outline */
+  opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
+  -webkit-transition: .2s; /* 0.2 seconds transition on hover */
+  transition: opacity .2s;
+}
+
+/* Mouse-over effects */
+.slider:hover {
+  opacity: 1; /* Fully shown on mouse-over */
+}
+
+/* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none; /* Override default look */
+  appearance: none;
+  width: 25px; /* Set a specific slider handle width */
+  height: 25px; /* Slider handle height */
+  background: rgb(255,255,255); /* Green background */
+  cursor: pointer; /* Cursor on hover */
+}
+
+.slider::-moz-range-thumb {
+  width: 25px; /* Set a specific slider handle width */
+  height: 25px; /* Slider handle height */
+  background: #4CAF50; /* Green background */
+  cursor: pointer; /* Cursor on hover */
+}
+    body {
+    position: relative;
+    overflow-x: hidden;
+    background-color: 000033;
+}
+body,
+html { height: 100%;}
+.nav .open > a,
+.nav .open > a:hover,
+.nav .open > a:focus {background-color: transparent;}
+
+/*-------------------------------*/
+/*           Wrappers            */
+/*-------------------------------*/
+
+#wrapper {
+    padding-left: 0;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+#wrapper.toggled {
+    padding-left: 220px;
+}
+
+#sidebar-wrapper {
+    z-index: 1000;
+    left: 220px;
+    width: 0;
+    height: 100%;
+    margin-left: -220px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    background: #1a1a1a;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+#sidebar-wrapper::-webkit-scrollbar {
+  display: none;
+}
+
+#wrapper.toggled #sidebar-wrapper {
+    width: 220px;
+}
+
+#page-content-wrapper {
+    width: 100%;
+    padding-top: 70px;
+}
+
+#wrapper.toggled #page-content-wrapper {
+    position: absolute;
+    margin-right: -220px;
+}
+
+/*-------------------------------*/
+/*     Sidebar nav styles        */
+/*-------------------------------*/
+.navbar {
+  padding: 0;
+}
+
+.sidebar-nav {
+    position: absolute;
+    top: 0;
+    width: 220px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.sidebar-nav li {
+    position: relative;
+    line-height: 20px;
+    display: inline-block;
+    width: 100%;
+}
+
+.sidebar-nav li:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    height: 100%;
+    width: 3px;
+    background-color: #1c1c1c;
+    -webkit-transition: width .2s ease-in;
+      -moz-transition:  width .2s ease-in;
+       -ms-transition:  width .2s ease-in;
+            transition: width .2s ease-in;
+
+}
+.sidebar-nav li:first-child a {
+    color: #fff;
+    background-color: #1a1a1a;
+}
+.sidebar-nav li:nth-child(5n+1):before {
+    background-color: #ec1b5a;
+}
+.sidebar-nav li:nth-child(5n+2):before {
+    background-color: #79aefe;
+}
+.sidebar-nav li:nth-child(5n+3):before {
+    background-color: #314190;
+}
+.sidebar-nav li:nth-child(5n+4):before {
+    background-color: #279636;
+}
+.sidebar-nav li:nth-child(5n+5):before {
+    background-color: #7d5d81;
+}
+
+.sidebar-nav li:hover:before,
+.sidebar-nav li.open:hover:before {
+    width: 100%;
+    -webkit-transition: width .2s ease-in;
+      -moz-transition:  width .2s ease-in;
+       -ms-transition:  width .2s ease-in;
+            transition: width .2s ease-in;
+
+}
+
+.sidebar-nav li a {
+    display: block;
+    color: #ddd;
+    text-decoration: none;
+    padding: 10px 15px 10px 30px;
+}
+
+.sidebar-nav li a:hover,
+.sidebar-nav li a:active,
+.sidebar-nav li a:focus,
+.sidebar-nav li.open a:hover,
+.sidebar-nav li.open a:active,
+.sidebar-nav li.open a:focus{
+    color: #fff;
+    text-decoration: none;
+    background-color: transparent;
+}
+.sidebar-header {
+    text-align: center;
+    font-size: 20px;
+    position: relative;
+    width: 100%;
+    display: inline-block;
+}
+.sidebar-brand {
+    height: 100px;
+    position: relative;
+    background:#212531;
+    background: linear-gradient(to right bottom, #2f3441 50%, #212531 50%);
+   padding-top: 1em;
+}
+.sidebar-brand a {
+    color: #ddd;
+}
+.sidebar-brand a:hover {
+    color: #fff;
+    text-decoration: none;
+}
+.dropdown-header {
+    text-align: center;
+    font-size: 1em;
+    color: #ddd;
+    background:#212531;
+    background: linear-gradient(to right bottom, #2f3441 50%, #212531 50%);
+}
+.sidebar-nav .dropdown-menu {
+    position: relative;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    border-radius: 0;
+    border: none;
+    background-color: #222;
+    box-shadow: none;
+}
+.dropdown-menu.show {
+    top: 0;
+}
+/*Fontawesome icons*/
+.nav.sidebar-nav li a::before {
+    font-family: fontawesome;
+    content: "\f12e";
+    vertical-align: baseline;
+    display: inline-block;
+    padding-right: 5px;
+}
+a[id*="#new"]::before {
+  content: "\f015"  !important;
+}
+a[id*="#source"]::before {
+  content: "\f121" !important;
+}
+a[href*="#events"]::before {
+  content: "\f073" !important;
+}
+a[href*="#events"]::before {
+  content: "\f073" !important;
+}
+a[id*="#group"]::before {
+  content: "\f0c0" !important;
+}
+a[href*="#predict"]::before {
+  content: "\f0d0" !important;
+}
+a[id*="#p"]::before {
+  content: "\f05d" !important;
+}
+a[id*="#h"]::before {
+  content: "\f05d" !important;
+}
+a[id*="#c"]::before {
+  content: "\f05d" !important;
+}
+a[id*="#d"]::before {
+  content: "\f05d" !important;
+}
+a[id*="#co"]::before {
+  content: "\f05d" !important;
+}
+
+a[id*="#t"]::before {
+  content: "\f05d" !important;
+}
+a[id*="#l"]::before {
+  content: "\f05d" !important;
+}
+a[id*="#b"]::before {
+  content: "\f05d" !important;
+}
+
+a[href*="#services"]::before {
+  content: "\f013" !important;
+}
+a[href*="#contact"]::before {
+  content: "\f086" !important;
+}
+a[href*="#followme"]::before {
+  content: "\f099" !important;
+  color: #0084b4;
+}
+/*-------------------------------*/
+/*       Hamburger-Cross         */
+/*-------------------------------*/
+
+.hamburger {
+  position: fixed;
+  top: 20px;
+  z-index: 999;
+  display: block;
+  width: 32px;
+  height: 32px;
+  margin-left: 15px;
+  background: rgb(255,255,255);
+  border: none;
+}
+.hamburger:hover,
+.hamburger:focus,
+.hamburger:active {
+  outline: none;
+}
+.hamburger.is-closed:before {
+  content: '';
+  display: block;
+  width: 100px;
+  font-size: 14px;
+  color: #fff;
+  line-height: 32px;
+  text-align: center;
+  opacity: 0;
+  -webkit-transform: translate3d(0,0,0);
+  -webkit-transition: all .35s ease-in-out;
+}
+.hamburger.is-closed:hover:before {
+  opacity: 1;
+  display: block;
+  -webkit-transform: translate3d(-100px,0,0);
+  -webkit-transition: all .35s ease-in-out;
+}
+
+.hamburger.is-closed .hamb-top,
+.hamburger.is-closed .hamb-middle,
+.hamburger.is-closed .hamb-bottom,
+.hamburger.is-open .hamb-top,
+.hamburger.is-open .hamb-middle,
+.hamburger.is-open .hamb-bottom {
+  position: absolute;
+  left: 0;
+  height: 4px;
+  width: 100%;
+}
+.hamburger.is-closed .hamb-top,
+.hamburger.is-closed .hamb-middle,
+.hamburger.is-closed .hamb-bottom {
+  background-color: #1a1a1a;
+}
+.hamburger.is-closed .hamb-top {
+  top: 5px;
+  -webkit-transition: all .35s ease-in-out;
+}
+.hamburger.is-closed .hamb-middle {
+  top: 50%;
+  margin-top: -2px;
+}
+.hamburger.is-closed .hamb-bottom {
+  bottom: 5px;
+  -webkit-transition: all .35s ease-in-out;
+}
+
+.hamburger.is-closed:hover .hamb-top {
+  top: 0;
+  -webkit-transition: all .35s ease-in-out;
+}
+.hamburger.is-closed:hover .hamb-bottom {
+  bottom: 0;
+  -webkit-transition: all .35s ease-in-out;
+}
+.hamburger.is-open .hamb-top,
+.hamburger.is-open .hamb-middle,
+.hamburger.is-open .hamb-bottom {
+  background-color: #1a1a1a;
+}
+.hamburger.is-open .hamb-top,
+.hamburger.is-open .hamb-bottom {
+  top: 50%;
+  margin-top: -2px;
+}
+.hamburger.is-open .hamb-top {
+  -webkit-transform: rotate(45deg);
+  -webkit-transition: -webkit-transform .2s cubic-bezier(.73,1,.28,.08);
+}
+.hamburger.is-open .hamb-middle { display: none; }
+.hamburger.is-open .hamb-bottom {
+  -webkit-transform: rotate(-45deg);
+  -webkit-transition: -webkit-transform .2s cubic-bezier(.73,1,.28,.08);
+}
+.hamburger.is-open:before {
+  content: '';
+  display: block;
+  width: 100px;
+  font-size: 14px;
+  color: #fff;
+  line-height: 32px;
+  text-align: center;
+  opacity: 0;
+  -webkit-transform: translate3d(0,0,0);
+  -webkit-transition: all .35s ease-in-out;
+}
+.hamburger.is-open:hover:before {
+  opacity: 1;
+  display: block;
+  -webkit-transform: translate3d(-100px,0,0);
+  -webkit-transition: all .35s ease-in-out;
+}
+
+/*-------------------------------*/
+/*            Overlay            */
+/*-------------------------------*/
+
+.overlay {
+    position: fixed;
+    display: none;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(250,250,250,.8);
+    z-index: 1;
+}
+
+</style>
+</head>
+<body>
+
+
+<div id="wrapper">
+   <div class="overlay"></div>
+
+        <!-- Sidebar -->
+    <nav class="navbar navbar-inverse fixed-top" id="sidebar-wrapper" role="navigation">
+     <ul class="nav sidebar-nav">
+       <div class="sidebar-header">
+       <div class="sidebar-brand">
+         <a href="#">Multiple Disease Predictor</a></div></div>
+       <li><a href="/home" id="#new">Home</a></li>
+       <li><a href="https://www.kaggle.com/rajghadi/liver/edit" id="#source">Source Code</a></li>
+
+       <li><a href="/team" id="#group">Team</a></li>
+       <li class="dropdown">
+       <a href="#predict" class="dropdown-toggle"  data-toggle="dropdown">Predict <span class="caret"></span></a>
+     <ul class="dropdown-menu animated fadeInLeft" role="menu">
+      <div class="dropdown-header">Predict Other Diseases</div>
+      <li><a href="/page" id="#p">Parkinson’s Disease</a></li>
+      <li><a href="/heart" id="#h">Heart Diseases</a></li>
+      <li><a href="/cancer" id="#c">Cancer</a></li>
+      <li><a href="/sugar" id="#d">Diabetes</a></li>
+      <li><a href="/covid" id="#co">Covid</a></li>
+      <li><a href="/tb" id="#t">tuberculosis</a></li>
+      <li><a href="/brain" id="#b">Brain Tumor</a></li>
+      <li><a href="/liver" id="#l">Liver</a></li>
+      </ul>
+      </li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="#followme">Follow me</a></li>
+      </ul>
+  </nav>
+        <!-- /#sidebar-wrapper -->
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <button type="button" class="hamburger animated fadeInLeft is-closed" data-toggle="offcanvas">
+                <span class="hamb-top"></span>
+    			<span class="hamb-middle"></span>
+				<span class="hamb-bottom"></span>
+            </button>
+            <div class="container">
+                <div class="row">
+                    <div class="container-fluid">
+
+                            <img src="static/images/kidney2.jpeg" style="width:100%; height:13%">
+                        <!-- jumbotron-->
+            <div class="container" style="background-color:1B1B1B;color:rgb(255,255,255); ">
+               <center>
+                <h2 style="padding-top:7%;">Implementation of Detecting Kidney Disease using  Machine Learning</h2>
+
+
+                       <img src="static/images/8.jpg" alt="collage logo"  style="padding-top:3%;">
+
+                 <h5  style="color:rgb(255,255,255);padding-bottom:30px;padding-top:30px;">K J Somaiya Institute of Engineering and Information Technology</h5>
+            </center>
+           </div>
+
+                        <!-- form -->
+
+    <div class="container">
+        <center>
+          <form action="{{url_for('resultK')}}" method="post"  class="form-row container " style="background-color:000033;color:rgb(255,255,255);" id="form" >
+           <h3  class="container" style="padding-bottom:50px;padding-top:50px;">Enter correct  details Below</h3>
+           <br>
+        <div class="slidecontainer">
+              <input class="slider" min="0" max="100" step="1" value="" type="range" class="form-control-range" id="Age", name="Age" placeholder="Age">
+            <p>Age: <span id="demo1"></span></p>
+        </div>
+        <div class="slidecontainer">
+             <input class="slider" min="0" max="200" step="1" value="" type="range" class="form-control-range" id="bp", name="bp" placeholder="bp">
+            <p>Blood Pressure:<span id="demo2"></span></p>
+        </div>
+
+
+        <div class="slidecontainer">
+             <input class="slider" min="0" max="1.5" step="0.01" value="" type="range" class="form-control-range" id="sg", name="sg" placeholder="sg">
+            <p>Specific Gravity:<span id="demo3"></span></p>
+        </div>
+        <div class="slidecontainer">
+           <input class="slider" min="0" max="5" step="0.01" value="" type="range" class="form-control-range" id="al", name="al" placeholder="al">
+            <p>Albumin: <span id="demo4"></span></p>
+       </div>
+        <div class="slidecontainer">
+              <input class="slider" min="0" max="5" step="0.01" value="" type="range" class="form-control-range" id="su", name="su" placeholder="su">
+            <p>Sugar: <span id="demo5"></span></p>
+        </div>
+        <div class="slidecontainer">
+             <input class="slider" min="0" max="1" step="1" value=""  type="range" class="form-control-range" id="rbc", name="rbc" placeholder="rbc">
+            <p>Red Blood Cells: <span id="demo6"></span></p>
+        </div>
+        <div class="slidecontainer">
+             <input class="slider" min="0" max="1" step="1" value="" type="range" class="form-control-range" id="pc", name="pc" placeholder="pc">
+            <p>Pus Cell: <span id="demo7"></span></p>
+        </div>
+
+
+        <div class="slidecontainer">
+           <input class="slider" min="0" max="1" step="1" value="" type="range" class="form-control-range" id="pcc", name="pcc" placeholder="pcc">
+            <p>Pus Cell Clumps: <span id="demo8"></span></p>
+       </div>
+       <div class="slidecontainer">
+              <input class="slider" min="0" max="1" step="1" value="" type="range" class="form-control-range" id="ba", name="ba" placeholder="ba">
+           <p>Bacteria: <span id="demo9"></span></p>
+       </div>
+        <div class="slidecontainer">
+             <input class="slider" min="0" max="500" step="1" value="" type="range" class="form-control-range" id="bgr", name="bgr" placeholder="bgr">
+            <p>Blood Glucose Random:<span id="demo10"></span></p>
+        </div>
+
+
+                      <div class="slidecontainer">
+              <input class="slider" min="0" max="400" step="0.01" value="" type="range" class="form-control-range" id="bu", name="bu" placeholder="bu">
+            <p>Blood Urea: <span id="demo11"></span></p>
+        </div>
+        <div class="slidecontainer">
+             <input class="slider" min="0" max="100" step="0.01" value="" type="range" class="form-control-range" id="sc", name="sc" placeholder="sc">
+            <p>Serum Creatinine:<span id="demo12"></span></p>
+        </div>
+
+
+        <div class="slidecontainer">
+             <input class="slider" min="0.1" max="200" step="0.01" value="" type="range" class="form-control-range" id="sod", name="sod" placeholder="sod">
+            <p>Sodium:<span id="demo13"></span></p>
+        </div>
+        <div class="slidecontainer">
+           <input class="slider" min="0" max="50" step="0.01" value="" type="range" class="form-control-range" id="pot", name="pot" placeholder="pot">
+            <p>Potassium: <span id="demo14"></span></p>
+       </div>
+        <div class="slidecontainer">
+              <input class="slider" min="0" max="20" step="0.01" value="" type="range" class="form-control-range" id="hemo", name="hemo" placeholder="hemo">
+            <p>Hemoglobin: <span id="demo15"></span></p>
+        </div>
+        <div class="slidecontainer">
+             <input class="slider" min="0" max="60" step="0.1" value=""  type="range" class="form-control-range" id="pcv", name="pcv" placeholder="pcv">
+            <p>Packed Cell Volume: <span id="demo16"></span></p>
+        </div>
+        <div class="slidecontainer">
+             <input class="slider" min="3800" max="26400" step="1" value="" type="range" class="form-control-range" id="wc", name="wc" placeholder="wc">
+            <p>White Blood Cell Count: <span id="demo17"></span></p>
+        </div>
+
+
+        <div class="slidecontainer">
+           <input class="slider" min="0" max="10" step="0.01" value="" type="range" class="form-control-range" id="rc", name="rc" placeholder="rc">
+            <p>Red Blood Cell Count: <span id="demo18"></span></p>
+       </div>
+       <div class="slidecontainer">
+              <input class="slider" min="0" max="1" step="1" value="" type="range" class="form-control-range" id="htn", name="htn" placeholder="htn">
+           <p>Hypertension: <span id="demo19"></span></p>
+       </div>
+        <div class="slidecontainer">
+             <input class="slider" min="0" max="1" step="1" value="" type="range" class="form-control-range" id="dm", name="dm" placeholder="dm">
+            <p>Diabetes Mellitus:<span id="demo20"></span></p>
+        </div>
+              <div class="slidecontainer">
+           <input class="slider" min="0" max="1" step="1" value="" type="range" class="form-control-range" id="cad", name="cad" placeholder="cad">
+            <p>Coronary Artery Disease: <span id="demo21"></span></p>
+       </div>
+        <div class="slidecontainer">
+              <input class="slider" min="0" max="1" step="1" value="" type="range" class="form-control-range" id="appet", name="appet" placeholder="appet">
+            <p>Appetite: <span id="demo22"></span></p>
+        </div>
+        <div class="slidecontainer">
+             <input class="slider" min="0" max="1" step="1" value=""  type="range" class="form-control-range" id="pe", name="pe" placeholder="pe">
+            <p>Pedal Edema: <span id="demo23"></span></p>
+        </div>
+        <div class="slidecontainer">
+             <input class="slider" min="0" max="1" step="1" value="" type="range" class="form-control-range" id="ane", name="ane" placeholder="ane">
+            <p>Anemia: <span id="demo24"></span></p>
+        </div>
+      <br>
+
+
+            <button type="submit" class="btn btn-outline-primary btn-block" style="padding-top:10px;padding-bottom:10px;margin-top:50px;margin-bottom:50px;">Predict</button>
+
+    </form>
+        </center>
+
+    </div>
+
+
+                            <div class="resultL">
+        <h1><center>{{predict_text}}</center></h1>
+    </div>
+    <br><br>
+
+
+          <!-- footer-->
+             <footer class="bg-dark text-center text-white" id="contact">
+                                <!-- Grid container -->
+                                       <div class="container p-4 pb-0" >
+    <!-- Section: Social media -->
+                                    <section class="mb-4" >
+                                        <p id="followme">Social Networks</p>
+      <!-- Facebook -->
+                        <a class="btn btn-outline-light btn-floating m-1" href="https://www.facebook.com/raj.ghadi.58511/" role="button" style=""><i class="fa fa-facebook-f"></i></a>
+
+      <!-- Twitter -->
+      <a class="btn btn-outline-light btn-floating m-1" href="https://mobile.twitter.com/RajGhadi14" role="button"><i class="fa fa-twitter"></i></a>
+
+      <!-- Google -->
+      <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i class="fa fa-google"></i></a>
+
+      <!-- Instagram -->
+      <a class="btn btn-outline-light btn-floating m-1" href="https://www.instagram.com/rajghadi1/" role="button"><i class="fa fa-instagram"></i></a>
+
+      <!-- Linkedin -->
+      <a class="btn btn-outline-light btn-floating m-1" href="https://www.linkedin.com/in/raj-ghadi/" role="button"><i class="fa fa-linkedin"></i></a>
+
+      <!-- Github -->
+      <a class="btn btn-outline-light btn-floating m-1" href="https://github.com/rajghadi1" role="button"><i class="fa fa-github"></i></a>
+    </section>
+                       <!-- Section: Social media -->
+                                           </div>
+                 <div >
+                     <p id="#contact">Contact</p>
+                     <section class="mb-4" >
+                            <a><i class="fa fa-phone"></i> &nbsp; &nbsp; +91 8928669402</a><br>
+                            <a><i class="fa fa-envelope"></i>  &nbsp; &nbsp;r.ghadi@somaiya.edu</a>
+                     </section>
+                 </div>
+                                       <!-- Grid container -->
+
+                                    <!-- Copyright -->
+                                  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+                                                        <a class="text-white" href="#page-content-wrapper">Implementation of Detecting Kidney Disease using  Machine Learning</a>
+                                                             </div>
+                                 <!-- Copyright -->
+                        </footer>
+
+
+
+
+
+
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+
+
+
+
+
+</body>
+</html>
+<script>
+    $(document).ready(function () {
+  var trigger = $('.hamburger'),
+      overlay = $('.overlay'),
+     isClosed = false;
+
+    trigger.click(function () {
+      hamburger_cross();
+    });
+
+    function hamburger_cross() {
+
+      if (isClosed == true) {
+        overlay.hide();
+        trigger.removeClass('is-open');
+        trigger.addClass('is-closed');
+        isClosed = false;
+      } else {
+        overlay.show();
+        trigger.removeClass('is-closed');
+        trigger.addClass('is-open');
+        isClosed = true;
+      }
+  }
+
+  $('[data-toggle="offcanvas"]').click(function () {
+        $('#wrapper').toggleClass('toggled');
+  });
+});
+</script>
+<script>
+var slider1 = document.getElementById("Age");
+var output1 = document.getElementById("demo1");
+output1.innerHTML = slider1.value; // Display the default slider value
+
+// Update the current slider value (each time you drag the slider handle)
+slider1.oninput = function() {
+  output1.innerHTML = this.value;
+}
+</script>
+
+<script>
+var slider2 = document.getElementById("bp");
+var output2 = document.getElementById("demo2");
+output2.innerHTML = slider2.value; // Display the default slider value
+
+// Update the current slider value (each time you drag the slider handle)
+slider2.oninput = function() {
+  output2.innerHTML = this.value;
+}
+</script>
+
+<script>
+var slider3 = document.getElementById("sg");
+var output3 = document.getElementById("demo3");
+output3.innerHTML = slider3.value; // Display the default slider value
+
+// Update the current slider value (each time you drag the slider handle)
+slider3.oninput = function() {
+  output3.innerHTML = this.value;
+}
+</script>
+
+<script>
+var slider4 = document.getElementById("al");
+var output4 = document.getElementById("demo4");
+output4.innerHTML = slider4.value; // Display the default slider value
+
+// Update the current slider value (each time you drag the slider handle)
+slider4.oninput = function() {
+  output4.innerHTML = this.value;
+}
+</script>
+<script>
+var slider5 = document.getElementById("su");
+var output5= document.getElementById("demo5");
+output5.innerHTML = slider5.value; // Display the default slider value
+
+// Update the current slider value (each time you drag the slider handle)
+slider5.oninput = function() {
+  output5.innerHTML = this.value;
+}
+</script>
+
+<script>
+var slider6 = document.getElementById("rbc");
+var output6 = document.getElementById("demo6");
+output6.innerHTML = slider6.value; // Display the default slider value
+
+// Update the current slider value (each time you drag the slider handle)
+slider6.oninput = function() {
+  output6.innerHTML = this.value;
+}
+</script>
+
+<script>
+var slider7 = document.getElementById("pc");
+var output7 = document.getElementById("demo7");
+output7.innerHTML = slider7.value; // Display the default slider value
+
+// Update the current slider value (each time you drag the slider handle)
+slider7.oninput = function() {
+  output7.innerHTML = this.value;
+}
+</script>
+
+<script>
+var slider8 = document.getElementById("pcc");
+var output8 = document.getElementById("demo8");
+output8.innerHTML = slider8.value; // Display the default slider value
+
+// Update the current slider value (each time you drag the slider handle)
+slider8.oninput = function() {
+  output8.innerHTML = this.value;
+}
+</script>
+
+<script>
+var slider9 = document.getElementById("ba");
+var output9 = document.getElementById("demo9");
+output9.innerHTML = slider9.value; // Display the default slider value
+
+// Update the current slider value (each time you drag the slider handle)
+slider9.oninput = function() {
+  output9.innerHTML = this.value;
+}
+</script>
+
+
+<script>
+var slider10 = document.getElementById("bgr");
+var output10 = document.getElementById("demo10");
+output10.innerHTML = slider10.value; // Display the default slider value
+
+// Update the current slider value (each time you drag the slider handle)
+slider10.oninput = function() {
+  output10.innerHTML = this.value;
+}
+</script>
+
+
+<script>
+var slider11 = document.getElementById("bu");
+var output11 = document.getElementById("demo11");
+output11.innerHTML = slider1.value; // Display the default slider value
+
+// Update the current slider value (each time you drag the slider handle)
+slider11.oninput = function() {
+  output11.innerHTML = this.value;
+}
+</script>
+
+<script>
+var slider12 = document.getElementById("sc");
+var output12 = document.getElementById("demo12");
+output2.innerHTML = slider12.value; // Display the default slider value
+
+// Update the current slider value (each time you drag the slider handle)
+slider12.oninput = function() {
+  output12.innerHTML = this.value;
+}
+</script>
+
+<script>
+var slider13 = document.getElementById("sod");
+var output13 = document.getElementById("demo13");
+output13.innerHTML = slider13.value; // Display the default slider value
+
+// Update the current slider value (each time you drag the slider handle)
+slider13.oninput = function() {
+  output13.innerHTML = this.value;
+}
+</script>
+
+<script>
+var slider14 = document.getElementById("pot");
+var output14 = document.getElementById("demo14");
+output4.innerHTML = slider14.value; // Display the default slider value
+
+// Update the current slider value (each time you drag the slider handle)
+slider14.oninput = function() {
+  output14.innerHTML = this.value;
+}
+</script>
+<script>
+var slider15 = document.getElementById("hemo");
+var output15= document.getElementById("demo15");
+output5.innerHTML = slider15.value; // Display the default slider value
+
+// Update the current slider value (each time you drag the slider handle)
+slider15.oninput = function() {
+  output15.innerHTML = this.value;
+}
+</script>
+
+<script>
+var slider16 = document.getElementById("pcv");
+var output16 = document.getElementById("demo16");
+output16.innerHTML = slider16.value; // Display the default slider value
+
+// Update the current slider value (each time you drag the slider handle)
+slider16.oninput = function() {
+  output16.innerHTML = this.value;
+}
+</script>
+
+<script>
+var slider17 = document.getElementById("wc");
+var output17 = document.getElementById("demo17");
+output17.innerHTML = slider17.value; // Display the default slider value
+
+// Update the current slider value (each time you drag the slider handle)
+slider17.oninput = function() {
+  output17.innerHTML = this.value;
+}
+</script>
+
+<script>
+var slider18 = document.getElementById("rc");
+var output18 = document.getElementById("demo18");
+output8.innerHTML = slider18.value; // Display the default slider value
+
+// Update the current slider value (each time you drag the slider handle)
+slider18.oninput = function() {
+  output18.innerHTML = this.value;
+}
+</script>
+
+<script>
+var slider19 = document.getElementById("htn");
+var output19 = document.getElementById("demo19");
+output9.innerHTML = slider19.value; // Display the default slider value
+
+// Update the current slider value (each time you drag the slider handle)
+slider19.oninput = function() {
+  output19.innerHTML = this.value;
+}
+</script>
+
+
+<script>
+var slider20 = document.getElementById("dm");
+var output20 = document.getElementById("demo20");
+output20.innerHTML = slider20.value; // Display the default slider value
+
+// Update the current slider value (each time you drag the slider handle)
+slider20.oninput = function() {
+  output20.innerHTML = this.value;
+}
+</script>
+
+<script>
+var slider21 = document.getElementById("cad");
+var output21 = document.getElementById("demo21");
+output21.innerHTML = slider21.value; // Display the default slider value
+
+// Update the current slider value (each time you drag the slider handle)
+slider21.oninput = function() {
+  output21.innerHTML = this.value;
+}
+</script>
+
+<script>
+var slider22 = document.getElementById("appet");
+var output22 = document.getElementById("demo22");
+output22.innerHTML = slider22.value; // Display the default slider value
+
+// Update the current slider value (each time you drag the slider handle)
+slider22.oninput = function() {
+  output22.innerHTML = this.value;
+}
+</script>
+
+<script>
+var slider23 = document.getElementById("pe");
+var output23 = document.getElementById("demo23");
+output23.innerHTML = slider23.value; // Display the default slider value
+
+// Update the current slider value (each time you drag the slider handle)
+slider23.oninput = function() {
+  output23.innerHTML = this.value;
+}
+</script>
+
+
+<script>
+var slider24 = document.getElementById("ane");
+var output24 = document.getElementById("demo24");
+output24.innerHTML = slider24.value; // Display the default slider value
+
+// Update the current slider value (each time you drag the slider handle)
+slider24.oninput = function() {
+  output24.innerHTML = this.value;
+}
+</script>

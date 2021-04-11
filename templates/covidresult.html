@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title></title>
+
+    <style>
+            body {
+    position: relative;
+    overflow-x: hidden;
+    background-color:#000833 ;
+}
+    </style>
+</head>
+<body>
+<center>
+    <div class="container" style="padding-top:4%;width:40%;height:50%" >
+            <img src="{{ user_image }}" alt="User Image" class="img-thumbnail" width="70%" height="50%"><br><br>
+            <h1 style="color:rgb(255,255,255);"><center>{{pred_output}}</center></h1>
+            <a href="/covid"><button class="btn btn-outline-primary btn-block" style="padding-top:10px;padding-bottom:10px;margin-top:50px;margin-bottom:50px;text-decoration: none;">Predict Again</button></a>
+            <a href="/home"><button href="/home"  class="btn btn-outline-primary btn-block" style="padding-top:10px;padding-bottom:10px;margin-top:50px;margin-bottom:50px;text-decoration: none;">Back To Home</button></a>
+    </div>
+</center>
+</body>
+</html>

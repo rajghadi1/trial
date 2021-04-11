@@ -1,0 +1,716 @@
+<html>
+<head>
+      <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+
+
+body{
+     word-wrap: break-word;
+     -webkit-hyphens: auto;
+     -moz-hyphens: auto;
+     -ms-hyphens: auto;
+     -o-hyphens: auto;
+     hyphens: auto;
+}
+
+
+        .predict{
+
+            padding-top: 200px;
+            width:100%;
+            height: 400px;
+            color: white;
+            margin-top:10px;
+            background-color:rgb(0,0,0);
+        }
+
+.slidecontainer {
+  width: 100%; /* Width of the outside container */
+}
+
+/* The slider itself */
+.slider {
+  -webkit-appearance: none;  /* Override default CSS styles */
+  appearance: none;
+  width: 100%; /* Full-width */
+  height: 15px; /* Specified height */
+  background: #2574A9; /* Grey background */
+  outline: none; /* Remove outline */
+  opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
+  -webkit-transition: .2s; /* 0.2 seconds transition on hover */
+  transition: opacity .2s;
+}
+
+/* Mouse-over effects */
+.slider:hover {
+  opacity: 1; /* Fully shown on mouse-over */
+}
+
+/* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none; /* Override default look */
+  appearance: none;
+  width: 25px; /* Set a specific slider handle width */
+  height: 25px; /* Slider handle height */
+  background: rgb(255,255,255); /* Green background */
+  cursor: pointer; /* Cursor on hover */
+}
+
+.slider::-moz-range-thumb {
+  width: 25px; /* Set a specific slider handle width */
+  height: 25px; /* Slider handle height */
+  background: #4CAF50; /* Green background */
+  cursor: pointer; /* Cursor on hover */
+}
+    body {
+    position: relative;
+    overflow-x: hidden;
+    background-color: 000033;
+}
+body,
+html { height: 100%;}
+.nav .open > a,
+.nav .open > a:hover,
+.nav .open > a:focus {background-color: transparent;}
+
+/*-------------------------------*/
+/*           Wrappers            */
+/*-------------------------------*/
+
+#wrapper {
+    padding-left: 0;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+#wrapper.toggled {
+    padding-left: 220px;
+}
+
+#sidebar-wrapper {
+    z-index: 1000;
+    left: 220px;
+    width: 0;
+    height: 100%;
+    margin-left: -220px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    background: #1a1a1a;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+#sidebar-wrapper::-webkit-scrollbar {
+  display: none;
+}
+
+#wrapper.toggled #sidebar-wrapper {
+    width: 220px;
+}
+
+#page-content-wrapper {
+    width: 100%;
+    padding-top: 70px;
+}
+
+#wrapper.toggled #page-content-wrapper {
+    position: absolute;
+    margin-right: -220px;
+}
+
+/*-------------------------------*/
+/*     Sidebar nav styles        */
+/*-------------------------------*/
+.navbar {
+  padding: 0;
+}
+
+.sidebar-nav {
+    position: absolute;
+    top: 0;
+    width: 220px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.sidebar-nav li {
+    position: relative;
+    line-height: 20px;
+    display: inline-block;
+    width: 100%;
+}
+
+.sidebar-nav li:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    height: 100%;
+    width: 3px;
+    background-color: #1c1c1c;
+    -webkit-transition: width .2s ease-in;
+      -moz-transition:  width .2s ease-in;
+       -ms-transition:  width .2s ease-in;
+            transition: width .2s ease-in;
+
+}
+.sidebar-nav li:first-child a {
+    color: #fff;
+    background-color: #1a1a1a;
+}
+.sidebar-nav li:nth-child(5n+1):before {
+    background-color: #ec1b5a;
+}
+.sidebar-nav li:nth-child(5n+2):before {
+    background-color: #79aefe;
+}
+.sidebar-nav li:nth-child(5n+3):before {
+    background-color: #314190;
+}
+.sidebar-nav li:nth-child(5n+4):before {
+    background-color: #279636;
+}
+.sidebar-nav li:nth-child(5n+5):before {
+    background-color: #7d5d81;
+}
+
+.sidebar-nav li:hover:before,
+.sidebar-nav li.open:hover:before {
+    width: 100%;
+    -webkit-transition: width .2s ease-in;
+      -moz-transition:  width .2s ease-in;
+       -ms-transition:  width .2s ease-in;
+            transition: width .2s ease-in;
+
+}
+
+.sidebar-nav li a {
+    display: block;
+    color: #ddd;
+    text-decoration: none;
+    padding: 10px 15px 10px 30px;
+}
+
+.sidebar-nav li a:hover,
+.sidebar-nav li a:active,
+.sidebar-nav li a:focus,
+.sidebar-nav li.open a:hover,
+.sidebar-nav li.open a:active,
+.sidebar-nav li.open a:focus{
+    color: #fff;
+    text-decoration: none;
+    background-color: transparent;
+}
+.sidebar-header {
+    text-align: center;
+    font-size: 20px;
+    position: relative;
+    width: 100%;
+    display: inline-block;
+}
+.sidebar-brand {
+    height: 65px;
+    position: relative;
+    background:#212531;
+    background: linear-gradient(to right bottom, #2f3441 50%, #212531 50%);
+   padding-top: 1em;
+}
+.sidebar-brand a {
+    color: #ddd;
+}
+.sidebar-brand a:hover {
+    color: #fff;
+    text-decoration: none;
+}
+.dropdown-header {
+    text-align: center;
+    font-size: 1em;
+    color: #ddd;
+    background:#212531;
+    background: linear-gradient(to right bottom, #2f3441 50%, #212531 50%);
+}
+.sidebar-nav .dropdown-menu {
+    position: relative;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    border-radius: 0;
+    border: none;
+    background-color: #222;
+    box-shadow: none;
+}
+.dropdown-menu.show {
+    top: 0;
+}
+/*Fontawesome icons*/
+.nav.sidebar-nav li a::before {
+    font-family: fontawesome;
+    content: "\f12e";
+    vertical-align: baseline;
+    display: inline-block;
+    padding-right: 5px;
+}
+a[href*="#home"]::before {
+  content: "\f015" !important;
+}
+a[href*="#about"]::before {
+  content: "\f129" !important;
+}
+a[href*="#events"]::before {
+  content: "\f073" !important;
+}
+a[href*="#events"]::before {
+  content: "\f073" !important;
+}
+a[href*="#team"]::before {
+  content: "\f0c0" !important;
+}
+a[href*="#works"]::before {
+  content: "\f0b1" !important;
+}
+a[href*="#pictures"]::before {
+  content: "\f03e" !important;
+}
+a[href*="#videos"]::before {
+  content: "\f03d" !important;
+}
+a[href*="#books"]::before {
+  content: "\f02d" !important;
+}
+a[href*="#art"]::before {
+  content: "\f1fc" !important;
+}
+a[href*="#awards"]::before {
+  content: "\f02e" !important;
+}
+a[href*="#services"]::before {
+  content: "\f013" !important;
+}
+a[href*="#contact"]::before {
+  content: "\f086" !important;
+}
+a[href*="#followme"]::before {
+  content: "\f099" !important;
+  color: #0084b4;
+}
+/*-------------------------------*/
+/*       Hamburger-Cross         */
+/*-------------------------------*/
+
+.hamburger {
+  position: fixed;
+  top: 20px;
+  z-index: 999;
+  display: block;
+  width: 32px;
+  height: 32px;
+  margin-left: 15px;
+  background: rgb(255,255,255);
+  border: none;
+}
+.hamburger:hover,
+.hamburger:focus,
+.hamburger:active {
+  outline: none;
+}
+.hamburger.is-closed:before {
+  content: '';
+  display: block;
+  width: 100px;
+  font-size: 14px;
+  color: #fff;
+  line-height: 32px;
+  text-align: center;
+  opacity: 0;
+  -webkit-transform: translate3d(0,0,0);
+  -webkit-transition: all .35s ease-in-out;
+}
+.hamburger.is-closed:hover:before {
+  opacity: 1;
+  display: block;
+  -webkit-transform: translate3d(-100px,0,0);
+  -webkit-transition: all .35s ease-in-out;
+}
+
+.hamburger.is-closed .hamb-top,
+.hamburger.is-closed .hamb-middle,
+.hamburger.is-closed .hamb-bottom,
+.hamburger.is-open .hamb-top,
+.hamburger.is-open .hamb-middle,
+.hamburger.is-open .hamb-bottom {
+  position: absolute;
+  left: 0;
+  height: 4px;
+  width: 100%;
+}
+.hamburger.is-closed .hamb-top,
+.hamburger.is-closed .hamb-middle,
+.hamburger.is-closed .hamb-bottom {
+  background-color: #1a1a1a;
+}
+.hamburger.is-closed .hamb-top {
+  top: 5px;
+  -webkit-transition: all .35s ease-in-out;
+}
+.hamburger.is-closed .hamb-middle {
+  top: 50%;
+  margin-top: -2px;
+}
+.hamburger.is-closed .hamb-bottom {
+  bottom: 5px;
+  -webkit-transition: all .35s ease-in-out;
+}
+
+.hamburger.is-closed:hover .hamb-top {
+  top: 0;
+  -webkit-transition: all .35s ease-in-out;
+}
+.hamburger.is-closed:hover .hamb-bottom {
+  bottom: 0;
+  -webkit-transition: all .35s ease-in-out;
+}
+.hamburger.is-open .hamb-top,
+.hamburger.is-open .hamb-middle,
+.hamburger.is-open .hamb-bottom {
+  background-color: #1a1a1a;
+}
+.hamburger.is-open .hamb-top,
+.hamburger.is-open .hamb-bottom {
+  top: 50%;
+  margin-top: -2px;
+}
+.hamburger.is-open .hamb-top {
+  -webkit-transform: rotate(45deg);
+  -webkit-transition: -webkit-transform .2s cubic-bezier(.73,1,.28,.08);
+}
+.hamburger.is-open .hamb-middle { display: none; }
+.hamburger.is-open .hamb-bottom {
+  -webkit-transform: rotate(-45deg);
+  -webkit-transition: -webkit-transform .2s cubic-bezier(.73,1,.28,.08);
+}
+.hamburger.is-open:before {
+  content: '';
+  display: block;
+  width: 100px;
+  font-size: 14px;
+  color: #fff;
+  line-height: 32px;
+  text-align: center;
+  opacity: 0;
+  -webkit-transform: translate3d(0,0,0);
+  -webkit-transition: all .35s ease-in-out;
+}
+.hamburger.is-open:hover:before {
+  opacity: 1;
+  display: block;
+  -webkit-transform: translate3d(-100px,0,0);
+  -webkit-transition: all .35s ease-in-out;
+}
+
+/*-------------------------------*/
+/*            Overlay            */
+/*-------------------------------*/
+
+.overlay {
+    position: fixed;
+    display: none;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(250,250,250,.8);
+    z-index: 1;
+}
+
+</style>
+</head>
+<body>
+
+
+<div id="wrapper">
+   <div class="overlay"></div>
+
+        <!-- Sidebar -->
+    <nav class="navbar navbar-inverse fixed-top" id="sidebar-wrapper" role="navigation">
+     <ul class="nav sidebar-nav">
+       <div class="sidebar-header">
+       <div class="sidebar-brand">
+         <a href="#">Brand</a></div></div>
+       <li><a href="#home">Home</a></li>
+       <li><a href="#about">About</a></li>
+       <li><a href="#events">Events</a></li>
+       <li><a href="#team">Team</a></li>
+       <li class="dropdown">
+       <a href="#works" class="dropdown-toggle"  data-toggle="dropdown">Works <span class="caret"></span></a>
+     <ul class="dropdown-menu animated fadeInLeft" role="menu">
+      <div class="dropdown-header">Dropdown heading</div>
+      <li><a href="#pictures">Pictures</a></li>
+      <li><a href="#videos">Videeos</a></li>
+      <li><a href="#books">Books</a></li>
+      <li><a href="#art">Art</a></li>
+      <li><a href="#awards">Awards</a></li>
+      </ul>
+      </li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="#followme">Follow me</a></li>
+      </ul>
+  </nav>
+        <!-- /#sidebar-wrapper -->
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <button type="button" class="hamburger animated fadeInLeft is-closed" data-toggle="offcanvas">
+                <span class="hamb-top"></span>
+    			<span class="hamb-middle"></span>
+				<span class="hamb-bottom"></span>
+            </button>
+            <div class="container">
+                <div class="row">
+                    <div class="container-fluid">
+
+                                        <!-- predication -->
+
+    <div class="predict">
+        <h1 ><center>{{predict_text}}</center></h1>
+    </div>
+    <br><br>
+
+
+<!-- content -->
+
+<div class="container" style="background-color:rgb(37,116,169);padding:9%;">
+
+    <h1>How to Prevent Parkinson's Disease</h1>
+     <br><br><br>
+    <p>Parkinson's disease is a progressive neurological disorder that affects the way a person moves. Parkinson’s develops gradually and may start with a barely noticeable tremor in one of your hands.[1] Doctors do not know what causes Parkinson’s, but certain factors such as genes and environmental triggers may play a role.[2] As a result, there are no proven preventative measures for Parkinson's — no dietary or lifestyle choices have been proven to effect the development or progression of Parkinson's.[3] So, while you can make changes to improve your overall health, there is no proven connection between these methods and preventing Parkinson's disease.</p>
+     <br><br>
+    <h2 id="tip1">Making Healthy Dietary Choices</h2>
+    <br><br>
+    <h3 id="sug1">1.Drink caffeine.</h3> Having a cup of coffee or can of soda every day may help minimize your risk of developing Parkinson’s. Make sure to stay within recommended daily allowances for caffeine so that you don’t develop other health problems.
+    <ul>
+    <li>Choose any beverage with caffeine, as there is no evidence that one type of caffeine is better than others. For example, you could have coffee, tea, cola, or energy drinks. Some foods even have natural caffeine. These include: protein bars, coffee-flavored ice cream or yogurt, and chocolate.</li>
+    <li>Consume less than 400 milligrams of caffeine daily.[6] This is about four cups of brewed coffee, 10 cans of soda, or two “energy shot” drinks.[7] If you are drinking soda in order to get caffeine, consider limiting how much you drink. Sodas are often packed with sugar and won’t promote good health if you drink them too often.</li>
+    </ul>
+    <img src="static/images/s1.jfif" alt="pic1" width="100%" height="3%">
+    <br><br><br>
+
+   <h3 id="sug2">2.Sip green tea.</h3>
+    In addition to having coffee or tea, green tea may also prevent Parkinson’s.[8] Green tea has compounds called green tea polyphenols, a type of antioxidant, that may eliminate free radicals in your system.[9]
+   <ul><li>Be sure to read labels when drinking green tea. Some products have caffeine while others don’t. Remember that green tea counts towards your daily hydration totals.</li></ul>
+    <img src="static/images/s2.jfif" alt="pic2" width="100%" height="3%">
+    <br><br><br>
+
+    <h3 id="sug3">3.Enjoy more peppers. </h3>
+    Eating more peppers—red, green, yellow, and orange—may lower your risk for developing Parkinson’s. Incorporate peppers into daily meals and have them as snacks, both of which may help you stave off Parkinson’s when combined with other dietary and lifestyle choices.
+    <ul><li>Be aware that doctors are still unsure if raw or cooked peppers are better for decreasing your risk. Try having some peppers at each meal and make sure you vary the colors to get the most nutrients. For example, you could have an omelet with peppers at breakfast, a salad with diced peppers for lunch, and stuffed peppers for dinner. Have some pepper strips dipped in hummus or light ranch dressing for a snack.</li></ul>
+    <img src="static/images/s3.jfif" alt="pic3" width="100%" height="3%">
+    <br><br><br>
+
+    <h3 id="sug4">4 Be sure to eat lots of fresh, raw vegetables.</h3>
+    In addition to eating peppers, having fresh and raw vegetables at every meal may decrease your Parkinson’s risk. This is because low levels of the B vitamin folate, which is also called folic acid, may increase your risk for the disease.[11] You can easily get folic acid by incorporating lots of vegetables in your diet. Some of the best sources of folate are:
+    <ul>
+    <li>Spinach</li>
+    <li>Endive</li>
+    <li>Romaine lettuce</li>
+    <li>Asparagus</li>
+    <li>Mustard greens</li>
+    <li>Collard greens</li>
+    <li>Okra</li>
+    <li>Cabbage</li>
+    </ul>
+    <img src="static/images/s4.jfif" alt="pic4" width="100%" height="3%">
+     <br><br><br>
+
+    <h3 id="sug5">5 Boost antioxidant consumption. </h3>
+    Oxidative stress, which is a result of free radicals in the body, may contribute to Parkinson’s. Getting rid of free radicals by eating foods with lots of antioxidants may also help prevent Parkinson’s. Some great sources of antioxidants include:
+    <ul>
+        <li>Artichokes</li>
+        <li>Kale</li>
+        <li>Potatoes</li>
+        <li>Berries</li>
+        <li>Pears</li>
+        <li>Apples</li>
+        <li>Grapes</li>
+        <li>Eggs</li>
+        <li>Kidney beans</li>
+        <li>Lentils</li>
+        <li>Pecans</li>
+        <li>Walnuts</li>
+        <li>Dark chocolate</li>
+        <li>Red wine</li>
+        <li>Fava beans</li>
+    </ul>
+    <img src="static/images/s5.jfif" alt="pic5" width="100%" height="3%">
+    <br><br><br>
+
+     <h3 id="sug6">6 Take antioxidant supplements.</h3>
+    Antioxidants can scavenge free radicals and may reduce your risk of developing Parkinson’s. Eating a healthy and nutritious diet can help you get antioxidants, but consider taking antioxidant supplements to help boost free radical elimination.[14]
+    <ul>
+    <li>Take supplements for Vitamins C and E. Consider getting mixed supplement that has multiple forms of Vitamin E to avoid possible side effects of this compound. Another antioxidant that may help is Omega-3 fatty acid.</li>
+    <li>Try Coenzyme Q10 (CoQ10), which is also present in foods such as organ meats, sardines, and mackerel.</li>
+    <li>Make sure to stay within recommended daily limits of any antioxidant to avoid toxicity. Reading product labels can alert you not only recommended daily values and how much is in the specific supplement. Ask a pharmacist any questions you might have.</li>
+    </ul>
+    <img src="static/images/s6.jfif" alt="pic6" width="100%" height="3%">
+    <br><br><br>
+
+    <h3 id="sug7">7 Limit your iron intake.</h3>
+    Eating iron is important to staying healthy, but it’s important to consume it within recommended levels. Too much iron may put your body into oxidative stress, which is when your body releases toxic free radicals into your system. In turn, this can contribute to the degeneration of brain cells that are often found in Parkinson’s patients.[16]
+    <ul><li>Get no more than 8 mg iron daily if you are a man. Women over the age of 51 should also not have more than 8 mg iron every day. Women between the ages of 18 and 50 should have 18 mg iron as a part of their daily diet. For example, one cup of fortified breakfast cereals has 18 mg, 3 ounces of pan fried beef liver has 5mg, and ½ cup of boiled and drained spinach has 3mg.</li></ul>
+    <img src="static/images/s7.jfif" alt="pic7" width="100%" height="3%">
+    <br><br><br>
+
+    <h3 id="sug8">8.Reduce manganese consumption.</h3>
+    Like iron, too much manganese can lead to oxidative stress, which can contribute to Parkinson’s. Make sure to stay within adequate intake margins of manganese to help prevent Parkinson’s.[18]
+    <ul><li>Recognize that there is no dietary allowance for manganese. Instead, there is adequate intake (AI) use. Eat less than 1.6 mg if you are a man and 2.3 mg if you are a woman. Sources of manganese include nuts, legumes, seeds, teas, whole grains, and leafy green vegetables.</li></ul>
+    <img src="static/images/s8.jfif" alt="pic8" width="100%" height="3%">
+    <br><br><br><br>
+
+     <h2 id="tip2">Making Lifestyle Changes</h2>
+     <br><br><br>
+
+    <h3 id="sugg1">1.Exercise regularly. </h3>
+    One of the common treatments for Parkinson’s is physical activity. Regular physical activity or exercise may minimize your risk for developing the disease by about 30%. This may be especially true for people in their 30s and 40s, which is decades before Parkinson’s often develops. Try and get some type of physical activity most days of the week to try and reduce your Parkinson’s risk.[20]
+    <ul>
+    <li>Do aerobic activity that gets your heart beating faster, which has a protective effect on brain tissue.</li>
+    <li>Aim for least 75 minutes of vigorous activity or 150 minutes of moderate activity each week. This translates to about 30 minutes five days a week. Do exercises and activities that challenge your body and that you enjoy. Things like hiking, walking, jogging or running, swimming, or biking are great options. Activities like jumping rope or on a trampoline can also get your heart pumping.</li>
+    </ul>
+    <img src="static/images/s9.jfif" alt="pic9" width="100%" height="3%">
+    <br><br><br>
+
+    <h3 id="sugg2">2 Avoid pesticides. </h3>
+    Exposing yourself to pesticides, insecticides, and herbicides may increase your risk of developing Parkinson’s.[22] These compounds can mimic the same function as Parkinson’s in the brain: they kill neurons in a small part of the brain called the substantia nigra pars compacta.[23] Avoid or limit your exposure to any pesticide as much as you can.
+     <ul><li>Stay indoors if you are around an area being sprayed with insecticides.</li></ul>
+    <img src="static/images/s10.jfif" alt="pic10" width="100%" height="3%">
+    <br><br><br>
+
+    <h3 id="sugg3">3 Steer clear of solvents. </h3>
+    Like pesticides, petrochemical solvents such as paints and glues may increase your risk for Parkinson’s. Although the evidence isn’t entirely clear on the connection between the two, it’s advisable to steer clear of solvents as much as you possibly can.[24]
+    <ul>
+    <li>Check product labels for the names of commonly used solvents including: isopropanol, toluene, xylene, white spirits, methylene chloride, trichloroethylene, and perchloroethylene.</li>
+    <li>Make sure your employer uses safe practices if exposure to solvents is a part of your job. If not, contact OSHA at 1-800-321-6742 to file a report and set in motion getting proper protection from solvents.[25]</li>
+    <li>Use low-volatility paints and glues if you can. Make sure any area exposed to solvents is adequately ventilated with open windows and fans.</li>
+    </ul>
+    <img src="static/images/s11.jfif" alt="pic11" width="100%" height="3%">
+    <br><br><br>
+
+
+    <h3 id="sugg4">4 Stay away from cigarettes. </h3>
+    A strange fact about Parkinson’s is that people who smoke appear to be less likely to develop the disease; however, this is no reason to start smoking, because the harmful effects of smoking far outweigh any benefit you might gain against Parkinson’s.[26]
+    <ul><li>Recognize that the link between smoking and a lower risk of Parkinson’s is that tobacco is a nightshade plant. You can incorporate other healthy nightshades into your diet by eating veggies like peppers, cauliflower, eggplant, potatoes, and tomatoes.</li></ul>
+    <img src="static/images/s12.jfif" alt="pic12" width="100%" height="3%">
+    <br><br><br><br>
+
+
+</div>
+
+        <!-- footer-->
+             <footer class="bg-dark text-center text-white" id="contact">
+                                <!-- Grid container -->
+                                       <div class="container p-4 pb-0" >
+    <!-- Section: Social media -->
+                                    <section class="mb-4" >
+                                        <p>Social Networks</p>
+      <!-- Facebook -->
+                        <a class="btn btn-outline-light btn-floating m-1" href="https://www.facebook.com/raj.ghadi.58511/" role="button" style=""><i class="fa fa-facebook-f"></i></a>
+
+      <!-- Twitter -->
+      <a class="btn btn-outline-light btn-floating m-1" href="https://mobile.twitter.com/RajGhadi14" role="button"><i class="fa fa-twitter"></i></a>
+
+      <!-- Google -->
+      <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i class="fa fa-google"></i></a>
+
+      <!-- Instagram -->
+      <a class="btn btn-outline-light btn-floating m-1" href="https://www.instagram.com/rajghadi1/" role="button"><i class="fa fa-instagram"></i></a>
+
+      <!-- Linkedin -->
+      <a class="btn btn-outline-light btn-floating m-1" href="https://www.linkedin.com/in/raj-ghadi/" role="button"><i class="fa fa-linkedin"></i></a>
+
+      <!-- Github -->
+      <a class="btn btn-outline-light btn-floating m-1" href="https://github.com/rajghadi1" role="button"><i class="fa fa-github"></i></a>
+    </section>
+                       <!-- Section: Social media -->
+                                           </div>
+                 <div >
+                     <p>Contact</p>
+                     <section class="mb-4" >
+                            <a><i class="fa fa-phone"></i> &nbsp; &nbsp; +91 8928669402</a><br>
+                            <a><i class="fa fa-envelope"></i>  &nbsp; &nbsp;r.ghadi@somaiya.edu</a>
+                     </section>
+                 </div>
+                                       <!-- Grid container -->
+
+                                    <!-- Copyright -->
+                                  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+                                                        <a class="text-white" href="#demo">Parkinson’s Disease Predication using Machine Learning</a>
+                                                             </div>
+                                 <!-- Copyright -->
+                        </footer>
+
+
+
+
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+
+
+
+
+
+</body>
+</html>
+<script>
+    $(document).ready(function () {
+  var trigger = $('.hamburger'),
+      overlay = $('.overlay'),
+     isClosed = false;
+
+    trigger.click(function () {
+      hamburger_cross();
+    });
+
+    function hamburger_cross() {
+
+      if (isClosed == true) {
+        overlay.hide();
+        trigger.removeClass('is-open');
+        trigger.addClass('is-closed');
+        isClosed = false;
+      } else {
+        overlay.show();
+        trigger.removeClass('is-closed');
+        trigger.addClass('is-open');
+        isClosed = true;
+      }
+  }
+
+  $('[data-toggle="offcanvas"]').click(function () {
+        $('#wrapper').toggleClass('toggled');
+  });
+});
+</script>
+

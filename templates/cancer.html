@@ -1,0 +1,1103 @@
+<html>
+<head>
+      <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+body{
+     word-wrap: break-word;
+     -webkit-hyphens: auto;
+     -moz-hyphens: auto;
+     -ms-hyphens: auto;
+     -o-hyphens: auto;
+     hyphens: auto;
+
+}
+
+.resultC{
+
+            padding-top: 150px;
+            width:100%;
+            height: 300px;
+            color: white;
+            margin-top:10px;
+            background-color:rgb(0,0,0);
+        }
+
+.slidecontainer {
+  width: 100%; /* Width of the outside container */
+}
+
+/* The slider itself */
+.slider {
+  -webkit-appearance: none;  /* Override default CSS styles */
+  appearance: none;
+  width: 100%; /* Full-width */
+  height: 15px; /* Specified height */
+  background: #2574A9; /* Grey background */
+  outline: none; /* Remove outline */
+  opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
+  -webkit-transition: .2s; /* 0.2 seconds transition on hover */
+  transition: opacity .2s;
+}
+
+/* Mouse-over effects */
+.slider:hover {
+  opacity: 1; /* Fully shown on mouse-over */
+}
+
+/* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none; /* Override default look */
+  appearance: none;
+  width: 25px; /* Set a specific slider handle width */
+  height: 25px; /* Slider handle height */
+  background: rgb(255,255,255); /* Green background */
+  cursor: pointer; /* Cursor on hover */
+}
+
+.slider::-moz-range-thumb {
+  width: 25px; /* Set a specific slider handle width */
+  height: 25px; /* Slider handle height */
+  background: #4CAF50; /* Green background */
+  cursor: pointer; /* Cursor on hover */
+}
+    body {
+    position: relative;
+    overflow-x: hidden;
+    background-color: 000033;
+    height:100%;
+}
+body,
+html { height: 100%;}
+.nav .open > a,
+.nav .open > a:hover,
+.nav .open > a:focus {background-color: transparent;}
+
+/*-------------------------------*/
+/*           Wrappers            */
+/*-------------------------------*/
+
+#wrapper {
+    padding-left: 0;
+
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+#wrapper.toggled {
+    padding-left: 220px;
+}
+
+#sidebar-wrapper {
+    z-index: 1000;
+    left: 220px;
+    width: 0;
+    height: 100%;
+    margin-left: -220px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    background: #1a1a1a;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+#sidebar-wrapper::-webkit-scrollbar {
+  display: none;
+}
+
+#wrapper.toggled #sidebar-wrapper {
+    width: 220px;
+}
+
+#page-content-wrapper {
+    width: 100%;
+
+    padding-top: 70px;
+
+}
+
+#wrapper.toggled #page-content-wrapper {
+    position: absolute;
+    margin-right: -220px;
+}
+
+/*-------------------------------*/
+/*     Sidebar nav styles        */
+/*-------------------------------*/
+.navbar {
+  padding: 0;
+}
+
+.sidebar-nav {
+    position: absolute;
+    top: 0;
+    width: 220px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.sidebar-nav li {
+    position: relative;
+    line-height: 20px;
+    display: inline-block;
+    width: 100%;
+}
+
+.sidebar-nav li:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    height: 100%;
+    width: 3px;
+    background-color: #1c1c1c;
+    -webkit-transition: width .2s ease-in;
+      -moz-transition:  width .2s ease-in;
+       -ms-transition:  width .2s ease-in;
+            transition: width .2s ease-in;
+
+}
+.sidebar-nav li:first-child a {
+    color: #fff;
+    background-color: #1a1a1a;
+}
+.sidebar-nav li:nth-child(5n+1):before {
+    background-color: #ec1b5a;
+}
+.sidebar-nav li:nth-child(5n+2):before {
+    background-color: #79aefe;
+}
+.sidebar-nav li:nth-child(5n+3):before {
+    background-color: #314190;
+}
+.sidebar-nav li:nth-child(5n+4):before {
+    background-color: #279636;
+}
+.sidebar-nav li:nth-child(5n+5):before {
+    background-color: #7d5d81;
+}
+
+.sidebar-nav li:hover:before,
+.sidebar-nav li.open:hover:before {
+    width: 100%;
+    -webkit-transition: width .2s ease-in;
+      -moz-transition:  width .2s ease-in;
+       -ms-transition:  width .2s ease-in;
+            transition: width .2s ease-in;
+
+}
+
+.sidebar-nav li a {
+    display: block;
+    color: #ddd;
+    text-decoration: none;
+    padding: 10px 15px 10px 30px;
+}
+
+.sidebar-nav li a:hover,
+.sidebar-nav li a:active,
+.sidebar-nav li a:focus,
+.sidebar-nav li.open a:hover,
+.sidebar-nav li.open a:active,
+.sidebar-nav li.open a:focus{
+    color: #fff;
+    text-decoration: none;
+    background-color: transparent;
+}
+.sidebar-header {
+    text-align: center;
+    font-size: 20px;
+    position: relative;
+    width: 100%;
+    display: inline-block;
+}
+.sidebar-brand {
+    height: 100px;
+    position: relative;
+    background:#212531;
+    background: linear-gradient(to right bottom, #2f3441 50%, #212531 50%);
+   padding-top: 1em;
+}
+.sidebar-brand a {
+    color: #ddd;
+}
+.sidebar-brand a:hover {
+    color: #fff;
+    text-decoration: none;
+}
+.dropdown-header {
+    text-align: center;
+    font-size: 1em;
+    color: #ddd;
+    background:#212531;
+    background: linear-gradient(to right bottom, #2f3441 50%, #212531 50%);
+}
+.sidebar-nav .dropdown-menu {
+    position: relative;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    border-radius: 0;
+    border: none;
+    background-color: #222;
+    box-shadow: none;
+}
+.dropdown-menu.show {
+    top: 0;
+}
+/*Fontawesome icons*/
+.nav.sidebar-nav li a::before {
+    font-family: fontawesome;
+    content: "\f12e";
+    vertical-align: baseline;
+    display: inline-block;
+    padding-right: 5px;
+}
+a[id*="#new"]::before {
+  content: "\f015"  !important;
+}
+a[id*="#source"]::before {
+  content: "\f121" !important;
+}
+a[href*="#events"]::before {
+  content: "\f073" !important;
+}
+a[href*="#events"]::before {
+  content: "\f073" !important;
+}
+a[id*="#group"]::before {
+  content: "\f0c0" !important;
+}
+a[href*="#predict"]::before {
+  content: "\f0d0" !important;
+}
+a[id*="#p"]::before {
+  content: "\f05d" !important;
+}
+a[id*="#h"]::before {
+  content: "\f05d" !important;
+}
+a[id*="#l"]::before {
+  content: "\f05d" !important;
+}
+a[id*="#d"]::before {
+  content: "\f05d" !important;
+}
+a[id*="#co"]::before {
+  content: "\f05d" !important;
+}
+a[id*="#t"]::before {
+  content: "\f05d" !important;
+}
+a[id*="#k"]::before {
+  content: "\f05d" !important;
+}
+a[id*="#b"]::before {
+  content: "\f05d" !important;
+}
+a[id*="#services"]::before {
+  content: "\f013" !important;
+}
+a[href*="#contact"]::before {
+  content: "\f086" !important;
+}
+a[href*="#followme"]::before {
+  content: "\f099" !important;
+  color: #0084b4;
+}
+/*-------------------------------*/
+/*       Hamburger-Cross         */
+/*-------------------------------*/
+
+.hamburger {
+  position: fixed;
+  top: 20px;
+  z-index: 999;
+  display: block;
+  width: 32px;
+  height: 32px;
+  margin-left: 15px;
+  background: rgb(255,255,255);
+  border: none;
+}
+.hamburger:hover,
+.hamburger:focus,
+.hamburger:active {
+  outline: none;
+}
+.hamburger.is-closed:before {
+  content: '';
+  display: block;
+  width: 100px;
+  font-size: 14px;
+  color: #fff;
+  line-height: 32px;
+  text-align: center;
+  opacity: 0;
+  -webkit-transform: translate3d(0,0,0);
+  -webkit-transition: all .35s ease-in-out;
+}
+.hamburger.is-closed:hover:before {
+  opacity: 1;
+  display: block;
+  -webkit-transform: translate3d(-100px,0,0);
+  -webkit-transition: all .35s ease-in-out;
+}
+
+.hamburger.is-closed .hamb-top,
+.hamburger.is-closed .hamb-middle,
+.hamburger.is-closed .hamb-bottom,
+.hamburger.is-open .hamb-top,
+.hamburger.is-open .hamb-middle,
+.hamburger.is-open .hamb-bottom {
+  position: absolute;
+  left: 0;
+  height: 4px;
+  width: 100%;
+}
+.hamburger.is-closed .hamb-top,
+.hamburger.is-closed .hamb-middle,
+.hamburger.is-closed .hamb-bottom {
+  background-color: #1a1a1a;
+}
+.hamburger.is-closed .hamb-top {
+  top: 5px;
+  -webkit-transition: all .35s ease-in-out;
+}
+.hamburger.is-closed .hamb-middle {
+  top: 50%;
+  margin-top: -2px;
+}
+.hamburger.is-closed .hamb-bottom {
+  bottom: 5px;
+  -webkit-transition: all .35s ease-in-out;
+}
+
+.hamburger.is-closed:hover .hamb-top {
+  top: 0;
+  -webkit-transition: all .35s ease-in-out;
+}
+.hamburger.is-closed:hover .hamb-bottom {
+  bottom: 0;
+  -webkit-transition: all .35s ease-in-out;
+}
+.hamburger.is-open .hamb-top,
+.hamburger.is-open .hamb-middle,
+.hamburger.is-open .hamb-bottom {
+  background-color: #1a1a1a;
+}
+.hamburger.is-open .hamb-top,
+.hamburger.is-open .hamb-bottom {
+  top: 50%;
+  margin-top: -2px;
+}
+.hamburger.is-open .hamb-top {
+  -webkit-transform: rotate(45deg);
+  -webkit-transition: -webkit-transform .2s cubic-bezier(.73,1,.28,.08);
+}
+.hamburger.is-open .hamb-middle { display: none; }
+.hamburger.is-open .hamb-bottom {
+  -webkit-transform: rotate(-45deg);
+  -webkit-transition: -webkit-transform .2s cubic-bezier(.73,1,.28,.08);
+}
+.hamburger.is-open:before {
+  content: '';
+  display: block;
+  width: 100px;
+  font-size: 14px;
+  color: #fff;
+  line-height: 32px;
+  text-align: center;
+  opacity: 0;
+  -webkit-transform: translate3d(0,0,0);
+  -webkit-transition: all .35s ease-in-out;
+}
+.hamburger.is-open:hover:before {
+  opacity: 1;
+  display: block;
+  -webkit-transform: translate3d(-100px,0,0);
+  -webkit-transition: all .35s ease-in-out;
+}
+
+/*-------------------------------*/
+/*            Overlay            */
+/*-------------------------------*/
+
+.overlay {
+    position: fixed;
+    display: none;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(250,250,250,.8);
+    z-index: 1;
+}
+
+</style>
+</head>
+<body >
+
+
+<div id="wrapper">
+   <div class="overlay"></div>
+
+        <!-- Sidebar -->
+    <nav class="navbar navbar-inverse fixed-top" id="sidebar-wrapper" role="navigation">
+     <ul class="nav sidebar-nav">
+       <div class="sidebar-header">
+       <div class="sidebar-brand">
+         <a href="#">Multiple Disease Predictor</a></div></div>
+       <li><a href="/home" id="#new">Home</a></li>
+       <li><a href="https://www.kaggle.com/rajghadi/cancer/edit" id="#source">Source Code</a></li>
+
+       <li><a href="/team" id="#group">Team</a></li>
+       <li class="dropdown">
+       <a href="#predict" class="dropdown-toggle"  data-toggle="dropdown">Predict <span class="caret"></span></a>
+     <ul class="dropdown-menu animated fadeInLeft" role="menu">
+      <div class="dropdown-header">Predict Other Diseases</div>
+      <li><a href="/page" id="#p">Parkinson’s Disease</a></li>
+      <li><a href="/heart" id="#h">Heart Diseases</a></li>
+      <li><a href="/liver" id="#l">Liver</a></li>
+      <li><a href="/sugar" id="#d">Diabetes</a></li>
+      <li><a href="/covid" id="#co">Covid</a></li>
+      <li><a href="/tb" id="#t">tuberculosis</a></li>
+      <li><a href="/brain" id="#b">Brain Tumor</a></li>
+      <li><a href="/kidney" id="#k">Kidney</a></li>
+      </ul>
+      </li>
+      <li><a href="/services" id="#services">Services</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="#followme">Follow me</a></li>
+      </ul>
+  </nav>
+        <!-- /#sidebar-wrapper -->
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper" >
+            <button type="button" class="hamburger animated fadeInLeft is-closed" data-toggle="offcanvas">
+                <span class="hamb-top"></span>
+    			<span class="hamb-middle"></span>
+				<span class="hamb-bottom"></span>
+            </button>
+            <div class="container">
+                <div class="row">
+                    <div class="container-fluid">
+
+                           <img src="static/images/cancer2.jpg" alt="collage logo"  style="width:100%; height:10%">
+                        <!-- jumbotron-->
+            <div class="container" style="background-color:1B1B1B;color:rgb(255,255,255); ">
+               <center>
+                <h2 style="padding-top:7%;">Implementation of Detecting Type of Cancer using  Machine Learning</h2>
+
+                        <img src="static/images/8.jpg" alt="collage logo"  style="padding-top:3%;">
+
+
+                 <h5  style="color:rgb(255,255,255);padding-bottom:30px;padding-top:30px;">K J Somaiya Institute of Engineering and Information Technology</h5>
+            </center>
+           </div>
+
+                        <!-- form -->
+
+    <div class="container">
+        <center>
+          <form action="{{url_for('resultC')}}" method="post"  class="form-row container " style="background-color:000033;color:rgb(255,255,255);" id="form" >
+           <h3  class="container" style="padding-bottom:50px;padding-top:50px;">Enter correct  details Below</h3>
+           <br>
+
+        <div class="slidecontainer">
+              <input class="slider" min="0" max="30" step="0.01" value="" type="range" class="form-control-range" id="radius_mean", name="radius_mean" placeholder="radius_mean">
+            <p>radius_mean <span id="demo1"></span></p>
+        </div>
+        <div class="slidecontainer">
+             <input class="slider" min="0" max="40" step="0.01" value="" type="range" class="form-control-range" id="texture_mean", name="texture_mean" placeholder="texture_mean">
+            <p>texture_mean <span id="demo2"></span></p>
+        </div>
+
+
+        <div class="slidecontainer">
+             <input class="slider" min="0" max="200" step="0.01" value="" type="range" class="form-control-range" id="perimeter_mean", name="perimeter_mean" placeholder="perimeter_mean">
+            <p>perimeter_mean <span id="demo3"></span></p>
+        </div>
+        <div class="slidecontainer">
+           <input class="slider" min="1" max="3000" step="1" value="" type="range" class="form-control-range" id="area_mean", name="area_mean" placeholder="area_mean">
+            <p>area_mean <span id="demo4"></span></p>
+       </div>
+        <div class="slidecontainer">
+              <input class="slider" min="0" max="0.2" step="0.010" value="" type="range" class="form-control-range" id="smoothness_mean", name="smoothness_mean" placeholder="smoothness_mean">
+            <p>smoothness_mean <span id="demo5"></span></p>
+        </div>
+        <div class="slidecontainer">
+             <input class="slider" min="0" max="0.5" step="0.010" value=""  type="range" class="form-control-range" id="compactness_mean", name="compactness_mean" placeholder="compactness_mean">
+            <p>compactness_mean <span id="demo6"></span></p>
+        </div>
+        <div class="slidecontainer">
+             <input class="slider" min="0" max="0.5" step="0.010" value="" type="range" class="form-control-range" id="concavity_mean", name="concavity_mean" placeholder="concavity_mean">
+            <p>concavity_mean <span id="demo7"></span></p>
+        </div>
+
+
+        <div class="slidecontainer">
+           <input class="slider" min="0" max="0.2" step="0.010" value="" type="range" class="form-control-range" id="concave points_mean", name="concave points_mean" placeholder="concave points_mean">
+            <p>concave points_mean <span id="demo8"></span></p>
+       </div>
+       <div class="slidecontainer">
+              <input class="slider" min="0" max="0.5" step="0.010" value="" type="range" class="form-control-range" id="symmetry_mean", name="symmetry_mean" placeholder="symmetry_mean">
+           <p>symmetry_mean <span id="demo9"></span></p>
+       </div>
+        <div class="slidecontainer">
+             <input class="slider" min="0" max="0.2" step="0.0010" value="" type="range" class="form-control-range" id="fractal_dimension_mean", name="fractal_dimension_mean" placeholder="fractal_dimension_mean">
+            <p>fractal_dimension_mean <span id="demo10"></span></p>
+        </div>
+        <div class="slidecontainer">
+             <input class="slider" min="0" max="0.3" step="0.0010" value="" type="range" class="form-control-range" id="radius_se", name="radius_se" placeholder="radius_se">
+            <p>radius_se <span id="demo11"></span></p>
+        </div>
+        <div class="slidecontainer">
+           <input class="slider" min="0" max="5" step="0.010" value="" type="range" class="form-control-range" id="texture_se", name="texture_se" placeholder="texture_se">
+            <p>texture_se <span id="demo12"></span></p>
+       </div>
+
+
+        <div class="slidecontainer">
+              <input class="slider" min="0" max="30" step="0.10" value="" type="range" class="form-control-range" id="perimeter_se", name="perimeter_se" placeholder="perimeter_se">
+            <p>perimeter_se<span id="demo13"></span></p>
+        </div>
+        <div class="slidecontainer">
+             <input class="slider" min="0" max="600" step="0.010" value="" type="range" class="form-control-range" id="area_se", name="area_se" placeholder="area_se">
+            <p>area_se <span id="demo14"></span></p>
+        </div>
+        <div class="slidecontainer">
+             <input class="slider" min="0" max="0.05" step="0.0010" value="" type="range" class="form-control-range" id="smoothness_se", name="smoothness_se" placeholder="smoothness_se">
+            <p>smoothness_se <span id="demo15"></span></p>
+        </div>
+        <div class="slidecontainer">
+           <input class="slider" min="0" max="0.2" step="0.010" value="" type="range" class="form-control-range" id="compactness_se", name="compactness_se" placeholder="compactness_se">
+            <p>compactness_se <span id="demo16"></span></p>
+       </div>
+        <div class="slidecontainer">
+             <input class="slider" min="0" max="0.5" step="0.010" value="" type="range" class="form-control-range" id="concavity_se", name="concavity_se" placeholder="concavity_se">
+            <p>concavity_se <span id="demo17"></span></p>
+        </div>
+
+
+        <div class="slidecontainer">
+             <input class="slider" min="0" max="0.05" step="0.0010" value="" type="range" class="form-control-range" id="concave points_se", name="concave points_se" placeholder="concave points_se">
+            <p>concave points_se: <span id="demo18"></span></p>
+        </div>
+        <div class="slidecontainer">
+           <input class="slider" min="0" max="0.1" step="0.0010"  value="" type="range" class="form-control-range" id="symmetry_se", name="symmetry_se" placeholder="symmetry_se">
+            <p>symmetry_se: <span id="demo19"></span></p>
+       </div>
+       <div class="slidecontainer">
+              <input class="slider" min="0" max="0.05" step="0.0010" value="" type="range" class="form-control-range" id="fractal_dimension_se", name="fractal_dimension_se" placeholder="fractal_dimension_se">
+           <p>fractal_dimension_se: <span id="demo20"></span></p>
+        </div>
+        <div class="slidecontainer">
+             <input class="slider" min="0" max="50" step="0.010" value="" type="range" class="form-control-range" id="radius_worst", name="radius_worst" placeholder="radius_worst">
+            <p>radius_worst: <span id="demo21"></span></p>
+        </div>
+
+        <div class="slidecontainer">
+             <input class="slider" min="0" max="50" step="0.010" value="" type="range" class="form-control-range" id="texture_worst", name="texture_worst" placeholder="texture_worst">
+            <p>texture_worst: <span id="demo22"></span></p>
+        </div>
+
+              <div class="slidecontainer">
+             <input class="slider" min="0" max="300" step="0.010" value="" type="range" class="form-control-range" id="perimeter_worst", name="perimeter_worst" placeholder="perimeter_worst">
+            <p>perimeter_worst: <span id="demo23"></span></p>
+        </div>
+        <div class="slidecontainer">
+           <input class="slider" min="0" max="5000" step="0.10" value="" type="range" class="form-control-range" id="area_worst", name="area_worst" placeholder="area_worst">
+            <p>area_worst: <span id="demo24"></span></p>
+       </div>
+        <div class="slidecontainer">
+             <input class="slider" min="0" max="0.5" step="0.010" value="" type="range" class="form-control-range" id="smoothness_worst", name="smoothness_worst" placeholder="smoothness_worst">
+            <p>smoothness_worst: <span id="demo25"></span></p>
+        </div>
+
+
+        <div class="slidecontainer">
+             <input class="slider" min="0" max="2" step="0.010" value="" type="range" class="form-control-range" id="compactness_worst", name="compactness_worst" placeholder="compactness_worst">
+            <p>compactness_worst: <span id="demo26"></span></p>
+        </div>
+        <div class="slidecontainer">
+           <input class="slider" min="0" max="2" step="0.010" value="" type="range" class="form-control-range" id="concavity_worst", name="concavity_worst" placeholder="concavity_worst">
+            <p>concavity_worst: <span id="demo27"></span></p>
+       </div>
+       <div class="slidecontainer">
+              <input class="slider" min="0" max="0.5" step="0.010" value="" type="range" class="form-control-range" id="concave points_worst", name="concave points_worst" placeholder="concave points_worst">
+           <p>concave points_worst: <span id="demo28"></span></p>
+        </div>
+        <div class="slidecontainer">
+             <input class="slider" min="0" max="1" step="0.010" value="" type="range" class="form-control-range" id="symmetry_worst", name="symmetry_worst" placeholder="symmetry_worst">
+            <p>symmetry_worst: <span id="demo29"></span></p>
+        </div>
+
+        <div class="slidecontainer">
+             <input class="slider" min="0" max="0.5" step="0.010" value="" type="range" class="form-control-range" id="fractal_dimension_worst", name="fractal_dimension_worst" placeholder="fractal_dimension_worst">
+            <p>fractal_dimension_worst: <span id="demo30"></span></p>
+        </div>
+
+
+      <br>
+
+
+            <button type="submit" class="btn btn-outline-primary btn-block" style="padding-top:10px;padding-bottom:10px;margin-top:50px;margin-bottom:50px;">Predict</button>
+
+
+
+    </form>
+        </center>
+
+    </div>
+
+              <div class="resultC">
+        <h1><center>{{predict_text}}</center></h1>
+    </div>
+    <br><br>
+
+
+
+          <!-- footer-->
+             <footer class="bg-dark text-center text-white" id="contact">
+                                <!-- Grid container -->
+                                       <div class="container p-4 pb-0" >
+    <!-- Section: Social media -->
+                                    <section class="mb-4" >
+                                        <p id="followme">Social Networks</p>
+      <!-- Facebook -->
+                        <a class="btn btn-outline-light btn-floating m-1" href="https://www.facebook.com/raj.ghadi.58511/" role="button" style=""><i class="fa fa-facebook-f"></i></a>
+
+      <!-- Twitter -->
+      <a class="btn btn-outline-light btn-floating m-1" href="https://mobile.twitter.com/RajGhadi14" role="button"><i class="fa fa-twitter"></i></a>
+
+      <!-- Google -->
+      <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i class="fa fa-google"></i></a>
+
+      <!-- Instagram -->
+      <a class="btn btn-outline-light btn-floating m-1" href="https://www.instagram.com/rajghadi1/" role="button"><i class="fa fa-instagram"></i></a>
+
+      <!-- Linkedin -->
+      <a class="btn btn-outline-light btn-floating m-1" href="https://www.linkedin.com/in/raj-ghadi/" role="button"><i class="fa fa-linkedin"></i></a>
+
+      <!-- Github -->
+      <a class="btn btn-outline-light btn-floating m-1" href="https://github.com/rajghadi1" role="button"><i class="fa fa-github"></i></a>
+    </section>
+                       <!-- Section: Social media -->
+                                           </div>
+                 <div >
+                     <p id="#contact">Contact</p>
+                     <section class="mb-4" >
+                            <a><i class="fa fa-phone"></i> &nbsp; &nbsp; +91 8928669402</a><br>
+                            <a><i class="fa fa-envelope"></i>  &nbsp; &nbsp;r.ghadi@somaiya.edu</a>
+                     </section>
+                 </div>
+                                       <!-- Grid container -->
+
+                                    <!-- Copyright -->
+                                  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+                                                        <a class="text-white" href="#page-content-wrapper">Implementation of Detecting Type of Cancer using Machine Learning</a>
+                                                             </div>
+                                 <!-- Copyright -->
+                        </footer>
+
+
+
+
+
+
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+
+
+
+
+
+</body>
+</html>
+<script>
+    $(document).ready(function () {
+  var trigger = $('.hamburger'),
+      overlay = $('.overlay'),
+     isClosed = false;
+
+    trigger.click(function () {
+      hamburger_cross();
+    });
+
+    function hamburger_cross() {
+
+      if (isClosed == true) {
+        overlay.hide();
+        trigger.removeClass('is-open');
+        trigger.addClass('is-closed');
+        isClosed = false;
+      } else {
+        overlay.show();
+        trigger.removeClass('is-closed');
+        trigger.addClass('is-open');
+        isClosed = true;
+      }
+  }
+
+  $('[data-toggle="offcanvas"]').click(function () {
+        $('#wrapper').toggleClass('toggled');
+  });
+});
+</script>
+<script>
+var slider1 = document.getElementById("radius_mean");
+var output1 = document.getElementById("demo1");
+output1.innerHTML = slider1.value; // Display the default slider value
+
+// Update the current slider value (each time you drag the slider handle)
+slider1.oninput = function() {
+  output1.innerHTML = this.value;
+}
+</script>
+
+<script>
+var slider2 = document.getElementById("texture_mean");
+var output2 = document.getElementById("demo2");
+output2.innerHTML = slider2.value; // Display the default slider value
+
+// Update the current slider value (each time you drag the slider handle)
+slider2.oninput = function() {
+  output2.innerHTML = this.value;
+}
+</script>
+
+<script>
+var slider3 = document.getElementById("perimeter_mean");
+var output3 = document.getElementById("demo3");
+output3.innerHTML = slider3.value; // Display the default slider value
+
+// Update the current slider value (each time you drag the slider handle)
+slider3.oninput = function() {
+  output3.innerHTML = this.value;
+}
+</script>
+
+<script>
+var slider4 = document.getElementById("area_mean");
+var output4 = document.getElementById("demo4");
+output4.innerHTML = slider4.value; // Display the default slider value
+
+// Update the current slider value (each time you drag the slider handle)
+slider4.oninput = function() {
+  output4.innerHTML = this.value;
+}
+</script>
+<script>
+var slider5 = document.getElementById("smoothness_mean");
+var output5= document.getElementById("demo5");
+output5.innerHTML = slider5.value; // Display the default slider value
+
+// Update the current slider value (each time you drag the slider handle)
+slider5.oninput = function() {
+  output5.innerHTML = this.value;
+}
+</script>
+
+<script>
+var slider6 = document.getElementById("compactness_mean");
+var output6 = document.getElementById("demo6");
+output6.innerHTML = slider6.value; // Display the default slider value
+
+// Update the current slider value (each time you drag the slider handle)
+slider6.oninput = function() {
+  output6.innerHTML = this.value;
+}
+</script>
+
+<script>
+var slider7 = document.getElementById("concavity_mean");
+var output7 = document.getElementById("demo7");
+output7.innerHTML = slider7.value; // Display the default slider value
+
+// Update the current slider value (each time you drag the slider handle)
+slider7.oninput = function() {
+  output7.innerHTML = this.value;
+}
+</script>
+
+<script>
+var slider8 = document.getElementById("concave points_mean");
+var output8 = document.getElementById("demo8");
+output8.innerHTML = slider8.value; // Display the default slider value
+
+// Update the current slider value (each time you drag the slider handle)
+slider8.oninput = function() {
+  output8.innerHTML = this.value;
+}
+</script>
+
+<script>
+var slider9 = document.getElementById("symmetry_mean");
+var output9 = document.getElementById("demo9");
+output9.innerHTML = slider9.value; // Display the default slider value
+
+// Update the current slider value (each time you drag the slider handle)
+slider9.oninput = function() {
+  output9.innerHTML = this.value;
+}
+</script>
+
+
+<script>
+var slider10 = document.getElementById("fractal_dimension_mean");
+var output10 = document.getElementById("demo10");
+output10.innerHTML = slider10.value; // Display the default slider value
+
+// Update the current slider value (each time you drag the slider handle)
+slider10.oninput = function() {
+  output10.innerHTML = this.value;
+}
+</script>
+
+<script>
+var slider11 = document.getElementById("radius_se");
+var output11 = document.getElementById("demo11");
+output11.innerHTML = slider11.value; // Display the default slider value
+
+// Update the current slider value (each time you drag the slider handle)
+slider11.oninput = function() {
+  output11.innerHTML = this.value;
+}
+</script>
+
+<script>
+var slider12 = document.getElementById("texture_se");
+var output12 = document.getElementById("demo12");
+output12.innerHTML = slider12.value; // Display the default slider value
+
+// Update the current slider value (each time you drag the slider handle)
+slider12.oninput = function() {
+  output12.innerHTML = this.value;
+}
+</script>
+
+<script>
+var slider13 = document.getElementById("perimeter_se");
+var output13 = document.getElementById("demo13");
+output13.innerHTML = slider13.value; // Display the default slider value
+
+// Update the current slider value (each time you drag the slider handle)
+slider13.oninput = function() {
+  output13.innerHTML = this.value;
+}
+</script>
+
+<script>
+var slider14 = document.getElementById("area_se");
+var output14 = document.getElementById("demo14");
+output14.innerHTML = slider14.value; // Display the default slider value
+
+// Update the current slider value (each time you drag the slider handle)
+slider14.oninput = function() {
+  output14.innerHTML = this.value;
+}
+</script>
+
+<script>
+var slider15 = document.getElementById("smoothness_se");
+var output15 = document.getElementById("demo15");
+output15.innerHTML = slider15.value; // Display the default slider value
+
+// Update the current slider value (each time you drag the slider handle)
+slider15.oninput = function() {
+  output15.innerHTML = this.value;
+}
+</script>
+
+<script>
+var slider16 = document.getElementById("compactness_se");
+var output16 = document.getElementById("demo16");
+output16.innerHTML = slider16.value; // Display the default slider value
+
+// Update the current slider value (each time you drag the slider handle)
+slider16.oninput = function() {
+  output16.innerHTML = this.value;
+}
+</script>
+
+<script>
+var slider17 = document.getElementById("concavity_se");
+var output17 = document.getElementById("demo17");
+output17.innerHTML = slider17.value; // Display the default slider value
+
+// Update the current slider value (each time you drag the slider handle)
+slider17.oninput = function() {
+  output17.innerHTML = this.value;
+}
+</script>
+
+<script>
+var slider18 = document.getElementById("concave points_se");
+var output18 = document.getElementById("demo18");
+output18.innerHTML = slider18.value; // Display the default slider value
+
+// Update the current slider value (each time you drag the slider handle)
+slider18.oninput = function() {
+  output18.innerHTML = this.value;
+}
+</script>
+
+<script>
+var slider19 = document.getElementById("symmetry_se");
+var output19 = document.getElementById("demo19");
+output19.innerHTML = slider19.value; // Display the default slider value
+
+// Update the current slider value (each time you drag the slider handle)
+slider19.oninput = function() {
+  output19.innerHTML = this.value;
+}
+</script>
+
+<script>
+var slider20 = document.getElementById("fractal_dimension_se");
+var output20 = document.getElementById("demo20");
+output20.innerHTML = slider20.value; // Display the default slider value
+
+// Update the current slider value (each time you drag the slider handle)
+slider20.oninput = function() {
+  output20.innerHTML = this.value;
+}
+</script>
+
+<script>
+var slider21 = document.getElementById("radius_worst");
+var output21 = document.getElementById("demo21");
+output21.innerHTML = slider21.value; // Display the default slider value
+
+// Update the current slider value (each time you drag the slider handle)
+slider21.oninput = function() {
+  output21.innerHTML = this.value;
+}
+</script>
+
+<script>
+var slider22 = document.getElementById("texture_worst");
+var output22 = document.getElementById("demo22");
+output22.innerHTML = slider22.value; // Display the default slider value
+
+// Update the current slider value (each time you drag the slider handle)
+slider22.oninput = function() {
+  output22.innerHTML = this.value;
+}
+</script>
+
+
+
+<script>
+var slider23 = document.getElementById("perimeter_worst");
+var output23 = document.getElementById("demo23");
+output23.innerHTML = slider23.value; // Display the default slider value
+
+// Update the current slider value (each time you drag the slider handle)
+slider23.oninput = function() {
+  output23.innerHTML = this.value;
+}
+</script>
+
+<script>
+var slider24 = document.getElementById("area_worst");
+var output24 = document.getElementById("demo24");
+output24.innerHTML = slider24.value; // Display the default slider value
+
+// Update the current slider value (each time you drag the slider handle)
+slider24.oninput = function() {
+  output24.innerHTML = this.value;
+}
+</script>
+
+<script>
+var slider25 = document.getElementById("smoothness_worst");
+var output25 = document.getElementById("demo25");
+output25.innerHTML = slider25.value; // Display the default slider value
+
+// Update the current slider value (each time you drag the slider handle)
+slider25.oninput = function() {
+  output25.innerHTML = this.value;
+}
+</script>
+
+<script>
+var slider26 = document.getElementById("compactness_worst");
+var output26 = document.getElementById("demo26");
+output26.innerHTML = slider26.value; // Display the default slider value
+
+// Update the current slider value (each time you drag the slider handle)
+slider26.oninput = function() {
+  output26.innerHTML = this.value;
+}
+</script>
+
+<script>
+var slider27 = document.getElementById("concavity_worst");
+var output27 = document.getElementById("demo27");
+output27.innerHTML = slider27.value; // Display the default slider value
+
+// Update the current slider value (each time you drag the slider handle)
+slider27.oninput = function() {
+  output27.innerHTML = this.value;
+}
+</script>
+
+<script>
+var slider28 = document.getElementById("concave points_worst");
+var output28 = document.getElementById("demo28");
+output28.innerHTML = slider28.value; // Display the default slider value
+
+// Update the current slider value (each time you drag the slider handle)
+slider28.oninput = function() {
+  output28.innerHTML = this.value;
+}
+</script>
+
+<script>
+var slider29 = document.getElementById("symmetry_worst");
+var output29 = document.getElementById("demo29");
+output29.innerHTML = slider29.value; // Display the default slider value
+
+// Update the current slider value (each time you drag the slider handle)
+slider29.oninput = function() {
+  output29.innerHTML = this.value;
+}
+</script>
+
+<script>
+var slider30 = document.getElementById("fractal_dimension_worst");
+var output30 = document.getElementById("demo30");
+output30.innerHTML = slider30.value; // Display the default slider value
+
+// Update the current slider value (each time you drag the slider handle)
+slider30.oninput = function() {
+  output30.innerHTML = this.value;
+}
+</script>
+

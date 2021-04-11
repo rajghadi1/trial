@@ -1,0 +1,773 @@
+<html>
+<head>
+      <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+body{
+     word-wrap: break-word;
+     -webkit-hyphens: auto;
+     -moz-hyphens: auto;
+     -ms-hyphens: auto;
+     -o-hyphens: auto;
+     hyphens: auto;
+}
+
+
+        .predict{
+
+            padding-top: 100px;
+            width:100%;
+            height: 200px;
+            color: white;
+            margin-top:30px;
+        }
+
+.slidecontainer {
+  width: 100%; /* Width of the outside container */
+}
+
+/* The slider itself */
+.slider {
+  -webkit-appearance: none;  /* Override default CSS styles */
+  appearance: none;
+  width: 100%; /* Full-width */
+  height: 15px; /* Specified height */
+  background: #2574A9; /* Grey background */
+  outline: none; /* Remove outline */
+  opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
+  -webkit-transition: .2s; /* 0.2 seconds transition on hover */
+  transition: opacity .2s;
+}
+
+/* Mouse-over effects */
+.slider:hover {
+  opacity: 1; /* Fully shown on mouse-over */
+}
+
+/* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none; /* Override default look */
+  appearance: none;
+  width: 25px; /* Set a specific slider handle width */
+  height: 25px; /* Slider handle height */
+  background: rgb(255,255,255); /* Green background */
+  cursor: pointer; /* Cursor on hover */
+}
+
+.slider::-moz-range-thumb {
+  width: 25px; /* Set a specific slider handle width */
+  height: 25px; /* Slider handle height */
+  background: #4CAF50; /* Green background */
+  cursor: pointer; /* Cursor on hover */
+}
+    body {
+    position: relative;
+    overflow-x: hidden;
+    background-color: 000033;
+}
+body,
+html { height: 100%;}
+.nav .open > a,
+.nav .open > a:hover,
+.nav .open > a:focus {background-color: transparent;}
+
+/*-------------------------------*/
+/*           Wrappers            */
+/*-------------------------------*/
+
+#wrapper {
+    padding-left: 0;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+#wrapper.toggled {
+    padding-left: 220px;
+}
+
+#sidebar-wrapper {
+    z-index: 1000;
+    left: 220px;
+    width: 0;
+    height: 100%;
+    margin-left: -220px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    background: #1a1a1a;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+#sidebar-wrapper::-webkit-scrollbar {
+  display: none;
+}
+
+#wrapper.toggled #sidebar-wrapper {
+    width: 220px;
+}
+
+#page-content-wrapper {
+    width: 100%;
+    padding-top: 70px;
+}
+
+#wrapper.toggled #page-content-wrapper {
+    position: absolute;
+    margin-right: -220px;
+}
+
+/*-------------------------------*/
+/*     Sidebar nav styles        */
+/*-------------------------------*/
+.navbar {
+  padding: 0;
+}
+
+.sidebar-nav {
+    position: absolute;
+    top: 0;
+    width: 220px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.sidebar-nav li {
+    position: relative;
+    line-height: 20px;
+    display: inline-block;
+    width: 100%;
+}
+
+.sidebar-nav li:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    height: 100%;
+    width: 3px;
+    background-color: #1c1c1c;
+    -webkit-transition: width .2s ease-in;
+      -moz-transition:  width .2s ease-in;
+       -ms-transition:  width .2s ease-in;
+            transition: width .2s ease-in;
+
+}
+.sidebar-nav li:first-child a {
+    color: #fff;
+    background-color: #1a1a1a;
+}
+.sidebar-nav li:nth-child(5n+1):before {
+    background-color: #ec1b5a;
+}
+.sidebar-nav li:nth-child(5n+2):before {
+    background-color: #79aefe;
+}
+.sidebar-nav li:nth-child(5n+3):before {
+    background-color: #314190;
+}
+.sidebar-nav li:nth-child(5n+4):before {
+    background-color: #279636;
+}
+.sidebar-nav li:nth-child(5n+5):before {
+    background-color: #7d5d81;
+}
+
+.sidebar-nav li:hover:before,
+.sidebar-nav li.open:hover:before {
+    width: 100%;
+    -webkit-transition: width .2s ease-in;
+      -moz-transition:  width .2s ease-in;
+       -ms-transition:  width .2s ease-in;
+            transition: width .2s ease-in;
+
+}
+
+.sidebar-nav li a {
+    display: block;
+    color: #ddd;
+    text-decoration: none;
+    padding: 10px 15px 10px 30px;
+}
+
+.sidebar-nav li a:hover,
+.sidebar-nav li a:active,
+.sidebar-nav li a:focus,
+.sidebar-nav li.open a:hover,
+.sidebar-nav li.open a:active,
+.sidebar-nav li.open a:focus{
+    color: #fff;
+    text-decoration: none;
+    background-color: transparent;
+}
+.sidebar-header {
+    text-align: center;
+    font-size: 20px;
+    position: relative;
+    width: 100%;
+    display: inline-block;
+}
+.sidebar-brand {
+    height: 65px;
+    position: relative;
+    background:#212531;
+    background: linear-gradient(to right bottom, #2f3441 50%, #212531 50%);
+   padding-top: 1em;
+}
+.sidebar-brand a {
+    color: #ddd;
+}
+.sidebar-brand a:hover {
+    color: #fff;
+    text-decoration: none;
+}
+.dropdown-header {
+    text-align: center;
+    font-size: 1em;
+    color: #ddd;
+    background:#212531;
+    background: linear-gradient(to right bottom, #2f3441 50%, #212531 50%);
+}
+.sidebar-nav .dropdown-menu {
+    position: relative;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    border-radius: 0;
+    border: none;
+    background-color: #222;
+    box-shadow: none;
+}
+.dropdown-menu.show {
+    top: 0;
+}
+/*Fontawesome icons*/
+.nav.sidebar-nav li a::before {
+    font-family: fontawesome;
+    content: "\f12e";
+    vertical-align: baseline;
+    display: inline-block;
+    padding-right: 5px;
+}
+a[href*="#home"]::before {
+  content: "\f015" !important;
+}
+a[href*="#about"]::before {
+  content: "\f129" !important;
+}
+a[href*="#events"]::before {
+  content: "\f073" !important;
+}
+a[href*="#events"]::before {
+  content: "\f073" !important;
+}
+a[href*="#team"]::before {
+  content: "\f0c0" !important;
+}
+a[href*="#works"]::before {
+  content: "\f0b1" !important;
+}
+a[href*="#pictures"]::before {
+  content: "\f03e" !important;
+}
+a[href*="#videos"]::before {
+  content: "\f03d" !important;
+}
+a[href*="#books"]::before {
+  content: "\f02d" !important;
+}
+a[href*="#art"]::before {
+  content: "\f1fc" !important;
+}
+a[href*="#awards"]::before {
+  content: "\f02e" !important;
+}
+a[href*="#services"]::before {
+  content: "\f013" !important;
+}
+a[href*="#contact"]::before {
+  content: "\f086" !important;
+}
+a[href*="#followme"]::before {
+  content: "\f099" !important;
+  color: #0084b4;
+}
+/*-------------------------------*/
+/*       Hamburger-Cross         */
+/*-------------------------------*/
+
+.hamburger {
+  position: fixed;
+  top: 20px;
+  z-index: 999;
+  display: block;
+  width: 32px;
+  height: 32px;
+  margin-left: 15px;
+  background: rgb(255,255,255);
+  border: none;
+}
+.hamburger:hover,
+.hamburger:focus,
+.hamburger:active {
+  outline: none;
+}
+.hamburger.is-closed:before {
+  content: '';
+  display: block;
+  width: 100px;
+  font-size: 14px;
+  color: #fff;
+  line-height: 32px;
+  text-align: center;
+  opacity: 0;
+  -webkit-transform: translate3d(0,0,0);
+  -webkit-transition: all .35s ease-in-out;
+}
+.hamburger.is-closed:hover:before {
+  opacity: 1;
+  display: block;
+  -webkit-transform: translate3d(-100px,0,0);
+  -webkit-transition: all .35s ease-in-out;
+}
+
+.hamburger.is-closed .hamb-top,
+.hamburger.is-closed .hamb-middle,
+.hamburger.is-closed .hamb-bottom,
+.hamburger.is-open .hamb-top,
+.hamburger.is-open .hamb-middle,
+.hamburger.is-open .hamb-bottom {
+  position: absolute;
+  left: 0;
+  height: 4px;
+  width: 100%;
+}
+.hamburger.is-closed .hamb-top,
+.hamburger.is-closed .hamb-middle,
+.hamburger.is-closed .hamb-bottom {
+  background-color: #1a1a1a;
+}
+.hamburger.is-closed .hamb-top {
+  top: 5px;
+  -webkit-transition: all .35s ease-in-out;
+}
+.hamburger.is-closed .hamb-middle {
+  top: 50%;
+  margin-top: -2px;
+}
+.hamburger.is-closed .hamb-bottom {
+  bottom: 5px;
+  -webkit-transition: all .35s ease-in-out;
+}
+
+.hamburger.is-closed:hover .hamb-top {
+  top: 0;
+  -webkit-transition: all .35s ease-in-out;
+}
+.hamburger.is-closed:hover .hamb-bottom {
+  bottom: 0;
+  -webkit-transition: all .35s ease-in-out;
+}
+.hamburger.is-open .hamb-top,
+.hamburger.is-open .hamb-middle,
+.hamburger.is-open .hamb-bottom {
+  background-color: #1a1a1a;
+}
+.hamburger.is-open .hamb-top,
+.hamburger.is-open .hamb-bottom {
+  top: 50%;
+  margin-top: -2px;
+}
+.hamburger.is-open .hamb-top {
+  -webkit-transform: rotate(45deg);
+  -webkit-transition: -webkit-transform .2s cubic-bezier(.73,1,.28,.08);
+}
+.hamburger.is-open .hamb-middle { display: none; }
+.hamburger.is-open .hamb-bottom {
+  -webkit-transform: rotate(-45deg);
+  -webkit-transition: -webkit-transform .2s cubic-bezier(.73,1,.28,.08);
+}
+.hamburger.is-open:before {
+  content: '';
+  display: block;
+  width: 100px;
+  font-size: 14px;
+  color: #fff;
+  line-height: 32px;
+  text-align: center;
+  opacity: 0;
+  -webkit-transform: translate3d(0,0,0);
+  -webkit-transition: all .35s ease-in-out;
+}
+.hamburger.is-open:hover:before {
+  opacity: 1;
+  display: block;
+  -webkit-transform: translate3d(-100px,0,0);
+  -webkit-transition: all .35s ease-in-out;
+}
+
+/*-------------------------------*/
+/*            Overlay            */
+/*-------------------------------*/
+
+.overlay {
+    position: fixed;
+    display: none;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(250,250,250,.8);
+    z-index: 1;
+}
+
+        .predict{
+            background-color: rgb(0,0,0);
+            padding-top: 200px;
+            width:cover;
+            height: 400px;
+            color: white;
+        }
+
+
+</style>
+</head>
+<body>
+
+
+<div id="wrapper">
+   <div class="overlay"></div>
+
+        <!-- Sidebar -->
+    <nav class="navbar navbar-inverse fixed-top" id="sidebar-wrapper" role="navigation">
+     <ul class="nav sidebar-nav">
+       <div class="sidebar-header">
+       <div class="sidebar-brand">
+         <a href="#">Brand</a></div></div>
+       <li><a href="#home">Home</a></li>
+       <li><a href="#about">About</a></li>
+       <li><a href="#events">Events</a></li>
+       <li><a href="#team">Team</a></li>
+       <li class="dropdown">
+       <a href="#works" class="dropdown-toggle"  data-toggle="dropdown">Works <span class="caret"></span></a>
+     <ul class="dropdown-menu animated fadeInLeft" role="menu">
+      <div class="dropdown-header">Dropdown heading</div>
+      <li><a href="#pictures">Pictures</a></li>
+      <li><a href="#videos">Videeos</a></li>
+      <li><a href="#books">Books</a></li>
+      <li><a href="#art">Art</a></li>
+      <li><a href="#awards">Awards</a></li>
+      </ul>
+      </li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="#followme">Follow me</a></li>
+      </ul>
+  </nav>
+        <!-- /#sidebar-wrapper -->
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <button type="button" class="hamburger animated fadeInLeft is-closed" data-toggle="offcanvas">
+                <span class="hamb-top"></span>
+    			<span class="hamb-middle"></span>
+				<span class="hamb-bottom"></span>
+            </button>
+            <div class="container">
+                <div class="row">
+                    <div class="container-fluid">
+
+
+                           <!-- predication -->
+
+    <div class="predict">
+        <h1><center>{{predict_text}}</center></h1>
+    </div>
+    <br><br>
+
+
+<!-- content -->
+
+<div class="container" style="background-color:rgb(37,116,169);padding:9%;">
+
+<h1 id="diagnosis">Diagnosis</h1>
+                       <br><center><img src="static/images/d1.jpeg" alt="pic1" width="100%" height="3%"></center><br>
+                       <p>No specific test exists to diagnose Parkinson's disease. Your doctor trained in nervous system conditions (neurologist) will diagnose Parkinson's disease based on your medical history, a review of your signs and symptoms, and a neurological and physical examination.</p>
+                        <p>Your doctor may suggest a specific single-photon emission computerized tomography (SPECT) scan called a dopamine transporter scan (DaTscan). Although this can help support the suspicion that you have Parkinson's disease, it is your symptoms and neurologic examination that ultimately determine the correct diagnosis. Most people do not require a DaTscan .</p>
+                        <p>Your doctor may order lab tests, such as blood tests, to rule out other conditions that may be causing your symptoms.
+                        <p>Imaging tests — such as an MRI, ultrasound of the brain, and PET scans — also may be used to help rule out other disorders. Imaging tests aren't particularly helpful for diagnosing Parkinson's disease.</p>
+                        <p>In addition to your examination, your doctor may give you carbidopa-levodopa (Rytary, Sinemet, others), a Parkinson's disease medication. You must be given a sufficient dose to show the benefit, as low doses for a day or two aren't reliable. Significant improvement with this medication will often confirm your diagnosis of Parkinson's disease.</p>
+                         <p>Sometimes it takes time to diagnose Parkinson's disease. Doctors may recommend regular follow-up appointments with neurologists trained in movement disorders to evaluate your condition and symptoms over time and diagnose Parkinson's disease.</p>
+
+<br><br><br>
+<h1 id="Treatment">Treatment</h1>
+   <br><center><img src="static/images/d2.jpg" alt="pic1" width="100%" height="5%"></center><br>
+                            <p>Parkinson's disease can't be cured, but medications can help control your symptoms, often dramatically. In some more advanced cases, surgery may be advised.</p>
+                             <p>Your doctor may also recommend lifestyle changes, especially ongoing aerobic exercise. In some cases, physical therapy that focuses on balance and stretching also is important. A speech-language pathologist may help improve your speech problems.</p>
+
+    <h4>Medications</h4>
+                               <p>Medications may help you manage problems with walking, movement and tremor. These medications increase or substitute for dopamine.</p>
+                              <p>People with Parkinson's disease have low brain dopamine concentrations. However, dopamine can't be given directly, as it can't enter your brain.</p>
+                              <p>You may have significant improvement of your symptoms after beginning Parkinson's disease treatment. Over time, however, the benefits of drugs frequently diminish or become less consistent. You can usually still control your symptoms fairly well.</p>
+                                <p>Medications your doctor may prescribe include:</p>
+<ul>
+    <li>
+        <b>Carbidopa-levodopa.</b>
+        <p>Levodopa, the most effective Parkinson's disease medication, is a natural chemical that passes into your brain and is converted to dopamine.</p>
+        <p>Levodopa is combined with carbidopa (Lodosyn), which protects levodopa from early conversion to dopamine outside your brain. This prevents or lessens side effects such as nausea.</p>
+        <p>Side effects may include nausea or lightheadedness (orthostatic hypotension).</p>
+        <p>After years, as your disease progresses, the benefit from levodopa may become less stable, with a tendency to wax and wane ("wearing off").</p>
+        <p>Also, you may experience involuntary movements (dyskinesia) after taking higher doses of levodopa. Your doctor may lessen your dose or adjust the times of your doses to control these effects.</p>
+
+    </li>
+    <li>
+        <b>Inhaled carbidopa-levodopa.</b>
+        <p>Inbrija is a new brand-name drug delivering carbidopa-levodopa in an inhaled form. It may be helpful in managing symptoms that arise when oral medications suddenly stop working during the day.</p>
+    </li>
+    <li>
+       <b> Carbidopa-levodopa infusion.</b>
+        <p>Duopa is a brand-name medication made up of carbidopa and levodopa. However, it's administered through a feeding tube that delivers the medication in a gel form directly to the small intestine.</p>
+       <p> Duopa is for patients with more-advanced Parkinson's who still respond to carbidopa-levodopa, but who have a lot of fluctuations in their response. Because Duopa is continually infused, blood levels of the two drugs remain constant.</p>
+       <p> Placement of the tube requires a small surgical procedure. Risks associated with having the tube include the tube falling out or infections at the infusion site.</p>
+    </li>
+    <li>
+        <b>Dopamine agonists.</b>
+        <p>Unlike levodopa, dopamine agonists don't change into dopamine. Instead, they mimic dopamine effects in your brain.</p>
+        <p>They aren't as effective as levodopa in treating your symptoms. However, they last longer and may be used with levodopa to smooth the sometimes off-and-on effect of levodopa.</p>
+        <p>Dopamine agonists include pramipexole (Mirapex), ropinirole (Requip) and rotigotine (Neupro, given as a patch). Apomorphine (Apokyn) is a short-acting injectable dopamine agonist used for quick relief.</p>
+        <p>Some of the side effects of dopamine agonists are similar to the side effects of carbidopa-levodopa. But they can also include hallucinations, sleepiness and compulsive behaviors such as hypersexuality, gambling and eating. If you're taking these medications and you behave in a way that's out of character for you, talk to your doctor.</p>
+    </li>
+    <li>
+        <b>MAO B inhibitors.</b>
+        <p>These medications include selegiline (Zelapar), rasagiline (Azilect) and safinamide (Xadago). They help prevent the breakdown of brain dopamine by inhibiting the brain enzyme monoamine oxidase B (MAO B). This enzyme metabolizes brain dopamine. Selegiline given with levodopa may help prevent wearing-off.</p>
+        <p>Side effects of MAO B inhibitors may include headaches, nausea or insomnia. When added to carbidopa-levodopa, these medications increase the risk of hallucinations.</p>
+        <p>These medications are not often used in combination with most antidepressants or certain narcotics due to potentially serious but rare reactions. Check with your doctor before taking any additional medications with an MAO B inhibitor.</p>
+    </li>
+                          <li>
+                               <b>Catechol O-methyltransferase (COMT) inhibitors.</b>
+                               <p>Entacapone (Comtan) and opicapone (Ongentys) are the primary medications from this class. This medication mildly prolongs the effect of levodopa therapy by blocking an enzyme that breaks down dopamine.</p>
+                               <p>Side effects, including an increased risk of involuntary movements (dyskinesia), mainly result from an enhanced levodopa effect. Other side effects include diarrhea, nausea or vomiting.</p>
+                               <p>Tolcapone (Tasmar) is another COMT inhibitor that is rarely prescribed due to a risk of serious liver damage and liver failure.</p>
+
+                          </li>
+
+                          <li>
+                               <b>Anticholinergics.</b>
+                               <p>These medications were used for many years to help control the tremor associated with Parkinson's disease. Several anticholinergic medications are available, including benztropine (Cogentin) or trihexyphenidyl.</p>
+                               <p>However, their modest benefits are often offset by side effects such as impaired memory, confusion, hallucinations, constipation, dry mouth and impaired urination.</p>
+                         </li>
+
+                          <li>
+                          <b>Amantadine.</b>
+                          <p>Doctors may prescribe amantadine alone to provide short-term relief of symptoms of mild, early-stage Parkinson's disease. It may also be given with carbidopa-levodopa therapy during the later stages of Parkinson's disease to control involuntary movements (dyskinesia) induced by carbidopa-levodopa.</p>
+                          <p>Side effects may include a purple mottling of the skin, ankle swelling or hallucinations.</p>
+                          </li>
+            </ul>
+
+
+  <h4>Surgical procedures</h4>
+    <b>Deep brain stimulation.</b>
+                   <p>In deep brain stimulation (DBS), surgeons implant electrodes into a specific part of your brain. The electrodes are connected to a generator implanted in your chest near your collarbone that sends electrical pulses to your brain and may reduce your Parkinson's disease symptoms.</p>
+                    <p>Your doctor may adjust your settings as necessary to treat your condition. Surgery involves risks, including infections, strokes or brain hemorrhage. Some people experience problems with the DBS system or have complications due to stimulation, and your doctor may need to adjust or replace some parts of the system.</p>
+                    <p>Deep brain stimulation is most often offered to people with advanced Parkinson's disease who have unstable medication (levodopa) responses. DBS can stabilize medication fluctuations, reduce or halt involuntary movements (dyskinesia), reduce tremor, reduce rigidity, and improve slowing of movement.</p>
+                    <br><center><img src="static/images/e1.webp" alt="pic1" width="100%" height="4%"></center><br>
+                     <p>DBS is effective in controlling erratic and fluctuating responses to levodopa or for controlling dyskinesia that doesn't improve with medication adjustments.</p>
+                    <p>However, DBS isn't helpful for problems that don't respond to levodopa therapy apart from a tremor. A tremor may be controlled by DBS even if the tremor isn't very responsive to levodopa.</p>
+                     <p>Although DBS may provide sustained benefit for Parkinson's symptoms, it doesn't keep Parkinson's disease from progressing.</p>
+                       <p>Because there have been infrequent reports that the DBS therapy affects the movements needed for swimming, the Food and Drug Administration recommends consulting with your doctor and taking water safety precautions before swimming.</p>
+
+<br><br><br>
+<h1 id="Lifestyle & home remedies">Lifestyle and home remedies</h1>
+                 <br><center><img src="static/images/d3.jfif" alt="pic1" width="100%" height="3%"></center><br>
+                  <p>If you've received a diagnosis of Parkinson's disease, you'll need to work closely with your doctor to find a treatment plan that offers you the greatest relief from symptoms with the fewest side effects. Certain lifestyle changes also may help make living with Parkinson's disease easier.</p>
+
+          <b>Healthy eating</b>
+                  <p>While no food or combination of foods has been proved to help in Parkinson's disease, some foods may help ease some of the symptoms. For example, eating foods high in fiber and drinking an adequate amount of fluids can help prevent constipation that is common in Parkinson's disease.</p>
+                  <p>A balanced diet also provides nutrients, such as omega-3 fatty acids, that might be beneficial for people with Parkinson's disease.</p>
+
+          <b>Exercise</b>
+                  <p>Exercising may increase your muscle strength, flexibility and balance. Exercise can also improve your well-being and reduce depression or anxiety.</p>
+                  <p>Your doctor may suggest that you work with a physical therapist to learn an exercise program that works for you. You may also try exercises such as walking, swimming, gardening, dancing, water aerobics or stretching.</p>
+                   <p>Parkinson's disease can disturb your sense of balance, making it difficult to walk with a normal gait. Exercise may improve your balance. These suggestions may also help:</p>
+                               <ul>
+                                    <li>Try not to move too quickly.</li>
+                                     <li>If you notice yourself shuffling, stop and check your posture. It's best to stand up straight.</li>
+                                     <li>Look in front of you, not directly down, while walking.</li>
+                               </ul>
+
+          <b>Avoiding falls</b>
+                      <p>In the later stages of the disease, you may fall more easily. In fact, you may be thrown off balance by just a small push or bump. The following suggestions may help:</p>
+                           <ul>
+                               <li>Make a U-turn instead of pivoting your body over your feet.</li>
+                               <li>Distribute your weight evenly between both feet, and don't lean.</li>
+                               <li>Avoid carrying things while you walk.</li>
+                               <li>Avoid walking backward.</li>
+                           </ul>
+
+             <b>Daily living activities</b>
+                    <p>Daily living activities — such as dressing, eating, bathing and writing — can be difficult for people with Parkinson's disease. An occupational therapist can show you techniques that make daily life easier.</p>
+<br><br><br>
+
+<h1 id="Alternative medicine">Alternative medicine</h1>
+   <br><center><img src="static/images/d4.jfif" alt="pic1" width="100%" height="5%"></center><br>
+       <p>Supportive therapies can help ease some of the symptoms and complications of Parkinson's disease, such as pain, fatigue and depression. When performed in combination with your treatments, these therapies might improve your quality of life:</p>
+
+      <ul>
+        <li>Massage. Massage therapy can reduce muscle tension and promote relaxation. This therapy, however, is rarely covered by health insurance.</li>
+        <li>Tai chi. An ancient form of Chinese exercise, tai chi employs slow, flowing motions that may improve flexibility, balance and muscle strength. Tai chi may also help prevent falls. Several forms of tai chi are tailored for people of any age or physical condition.</li>
+        <li>A study showed that tai chi may improve the balance of people with mild to moderate Parkinson's disease more than stretching and resistance training.</li>
+        <li>Yoga. In yoga, gentle stretching movements and poses may increase your flexibility and balance. You may modify most poses to fit your physical abilities.</li>
+        <li>Alexander technique. This technique — which focuses on muscle posture, balance and thinking about how you use muscles — may reduce muscle tension and pain.</li>
+        <li>Meditation. In meditation, you quietly reflect and focus your mind on an idea or image. Meditation may reduce stress and pain and improve your sense of well-being.</li>
+        <li>Pet therapy. Having a dog or cat may increase your flexibility and movement and improve your emotional health.</li>
+      </ul><br><br><br>
+
+
+<h1 id="Coping and support">Coping and support</h1>
+  <br><center><img src="static/images/d5.jfif" alt="pic1" width="100%" height="5%"></center><br>
+                 <p>Living with any chronic illness can be difficult, and it's normal to feel angry, depressed or discouraged at times. Parkinson's disease, in particular, can be profoundly frustrating, as walking, talking and even eating become more difficult and time-consuming.</p>
+                 <p>Depression is common in people with Parkinson's disease. But antidepressant medications can help ease the symptoms of depression, so talk with your doctor if you're feeling persistently sad or hopeless.</p>
+                 <p>Although friends and family can be your best allies, the understanding of people who know what you're going through can be especially helpful. Support groups aren't for everyone. However, for many people with Parkinson's disease and their families, a support group can be a good resource for practical information about Parkinson's disease.</p>
+                 <p>Also, groups offer a place for you to find people who are going through similar situations and can support you.</p>
+                 <p>To learn about support groups in your community, talk to your doctor, a Parkinson's disease social worker or a local public health nurse. Or contact the Parkinson's Foundation or the American Parkinson Disease Association.</p>
+                 <p>You and your family may also benefit from talking to a mental health professional, such as a psychologist or social worker trained in working with people who have chronic conditions.</p>
+
+
+
+
+</div>
+
+
+
+
+        <!-- footer-->
+             <footer class="bg-dark text-center text-white" id="contact">
+                                <!-- Grid container -->
+                                       <div class="container p-4 pb-0" >
+    <!-- Section: Social media -->
+                                    <section class="mb-4" >
+                                        <p>Social Networks</p>
+      <!-- Facebook -->
+                        <a class="btn btn-outline-light btn-floating m-1" href="https://www.facebook.com/raj.ghadi.58511/" role="button" style=""><i class="fa fa-facebook-f"></i></a>
+
+      <!-- Twitter -->
+      <a class="btn btn-outline-light btn-floating m-1" href="https://mobile.twitter.com/RajGhadi14" role="button"><i class="fa fa-twitter"></i></a>
+
+      <!-- Google -->
+      <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i class="fa fa-google"></i></a>
+
+      <!-- Instagram -->
+      <a class="btn btn-outline-light btn-floating m-1" href="https://www.instagram.com/rajghadi1/" role="button"><i class="fa fa-instagram"></i></a>
+
+      <!-- Linkedin -->
+      <a class="btn btn-outline-light btn-floating m-1" href="https://www.linkedin.com/in/raj-ghadi/" role="button"><i class="fa fa-linkedin"></i></a>
+
+      <!-- Github -->
+      <a class="btn btn-outline-light btn-floating m-1" href="https://github.com/rajghadi1" role="button"><i class="fa fa-github"></i></a>
+    </section>
+                       <!-- Section: Social media -->
+                                           </div>
+                 <div >
+                     <p>Contact</p>
+                     <section class="mb-4" >
+                            <a><i class="fa fa-phone"></i> &nbsp; &nbsp; +91 8928669402</a><br>
+                            <a><i class="fa fa-envelope"></i>  &nbsp; &nbsp;r.ghadi@somaiya.edu</a>
+                     </section>
+                 </div>
+                                       <!-- Grid container -->
+
+                                    <!-- Copyright -->
+                                  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+                                                        <a class="text-white" href="#demo">Parkinson’s Disease Predication using Machine Learning</a>
+                                                             </div>
+                                 <!-- Copyright -->
+                        </footer>
+
+
+
+
+
+
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+
+
+
+
+
+</body>
+</html>
+<script>
+    $(document).ready(function () {
+  var trigger = $('.hamburger'),
+      overlay = $('.overlay'),
+     isClosed = false;
+
+    trigger.click(function () {
+      hamburger_cross();
+    });
+
+    function hamburger_cross() {
+
+      if (isClosed == true) {
+        overlay.hide();
+        trigger.removeClass('is-open');
+        trigger.addClass('is-closed');
+        isClosed = false;
+      } else {
+        overlay.show();
+        trigger.removeClass('is-closed');
+        trigger.addClass('is-open');
+        isClosed = true;
+      }
+  }
+
+  $('[data-toggle="offcanvas"]').click(function () {
+        $('#wrapper').toggleClass('toggled');
+  });
+});
+</script>
+<script>
+var slider1 = document.getElementById("PPE");
+var output1 = document.getElementById("demo1");
+output1.innerHTML = slider1.value; // Display the default slider value
+
+// Update the current slider value (each time you drag the slider handle)
+slider1.oninput = function() {
+  output1.innerHTML = this.value;
+}
+</script>
+
+<script>
+var slider2 = document.getElementById("D2");
+var output2 = document.getElementById("demo2");
+output2.innerHTML = slider2.value; // Display the default slider value
+
+// Update the current slider value (each time you drag the slider handle)
+slider2.oninput = function() {
+  output2.innerHTML = this.value;
+}
+</script>
+

@@ -1,0 +1,1096 @@
+<html>
+<head>
+      <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+body{
+     word-wrap: break-word;
+     -webkit-hyphens: auto;
+     -moz-hyphens: auto;
+     -ms-hyphens: auto;
+     -o-hyphens: auto;
+     hyphens: auto;
+}
+
+
+        .predict{
+
+            padding-top: 100px;
+            width:100%;
+            height: 200px;
+            color: white;
+            margin-top:30px;
+        }
+
+.slidecontainer {
+  width: 100%; /* Width of the outside container */
+}
+
+/* The slider itself */
+.slider {
+  -webkit-appearance: none;  /* Override default CSS styles */
+  appearance: none;
+  width: 100%; /* Full-width */
+  height: 15px; /* Specified height */
+  background: #2574A9; /* Grey background */
+  outline: none; /* Remove outline */
+  opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
+  -webkit-transition: .2s; /* 0.2 seconds transition on hover */
+  transition: opacity .2s;
+}
+
+/* Mouse-over effects */
+.slider:hover {
+  opacity: 1; /* Fully shown on mouse-over */
+}
+
+/* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none; /* Override default look */
+  appearance: none;
+  width: 25px; /* Set a specific slider handle width */
+  height: 25px; /* Slider handle height */
+  background: rgb(255,255,255); /* Green background */
+  cursor: pointer; /* Cursor on hover */
+}
+
+.slider::-moz-range-thumb {
+  width: 25px; /* Set a specific slider handle width */
+  height: 25px; /* Slider handle height */
+  background: #4CAF50; /* Green background */
+  cursor: pointer; /* Cursor on hover */
+}
+    body {
+    position: relative;
+    overflow-x: hidden;
+    background-color: 000033;
+}
+body,
+html { height: 100%;}
+.nav .open > a,
+.nav .open > a:hover,
+.nav .open > a:focus {background-color: transparent;}
+
+/*-------------------------------*/
+/*           Wrappers            */
+/*-------------------------------*/
+
+#wrapper {
+    padding-left: 0;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+#wrapper.toggled {
+    padding-left: 220px;
+}
+
+#sidebar-wrapper {
+    z-index: 1000;
+    left: 220px;
+    width: 0;
+    height: 100%;
+    margin-left: -220px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    background: #1a1a1a;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+#sidebar-wrapper::-webkit-scrollbar {
+  display: none;
+}
+
+#wrapper.toggled #sidebar-wrapper {
+    width: 220px;
+}
+
+#page-content-wrapper {
+    width: 100%;
+    padding-top: 70px;
+}
+
+#wrapper.toggled #page-content-wrapper {
+    position: absolute;
+    margin-right: -220px;
+}
+
+/*-------------------------------*/
+/*     Sidebar nav styles        */
+/*-------------------------------*/
+.navbar {
+  padding: 0;
+}
+
+.sidebar-nav {
+    position: absolute;
+    top: 0;
+    width: 220px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.sidebar-nav li {
+    position: relative;
+    line-height: 20px;
+    display: inline-block;
+    width: 100%;
+}
+
+.sidebar-nav li:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    height: 100%;
+    width: 3px;
+    background-color: #1c1c1c;
+    -webkit-transition: width .2s ease-in;
+      -moz-transition:  width .2s ease-in;
+       -ms-transition:  width .2s ease-in;
+            transition: width .2s ease-in;
+
+}
+.sidebar-nav li:first-child a {
+    color: #fff;
+    background-color: #1a1a1a;
+}
+.sidebar-nav li:nth-child(5n+1):before {
+    background-color: #ec1b5a;
+}
+.sidebar-nav li:nth-child(5n+2):before {
+    background-color: #79aefe;
+}
+.sidebar-nav li:nth-child(5n+3):before {
+    background-color: #314190;
+}
+.sidebar-nav li:nth-child(5n+4):before {
+    background-color: #279636;
+}
+.sidebar-nav li:nth-child(5n+5):before {
+    background-color: #7d5d81;
+}
+
+.sidebar-nav li:hover:before,
+.sidebar-nav li.open:hover:before {
+    width: 100%;
+    -webkit-transition: width .2s ease-in;
+      -moz-transition:  width .2s ease-in;
+       -ms-transition:  width .2s ease-in;
+            transition: width .2s ease-in;
+
+}
+
+.sidebar-nav li a {
+    display: block;
+    color: #ddd;
+    text-decoration: none;
+    padding: 10px 15px 10px 30px;
+}
+
+.sidebar-nav li a:hover,
+.sidebar-nav li a:active,
+.sidebar-nav li a:focus,
+.sidebar-nav li.open a:hover,
+.sidebar-nav li.open a:active,
+.sidebar-nav li.open a:focus{
+    color: #fff;
+    text-decoration: none;
+    background-color: transparent;
+}
+.sidebar-header {
+    text-align: center;
+    font-size: 20px;
+    position: relative;
+    width: 100%;
+    display: inline-block;
+}
+.sidebar-brand {
+    height: 100px;
+    position: relative;
+    background:#212531;
+    background: linear-gradient(to right bottom, #2f3441 50%, #212531 50%);
+   padding-top: 1em;
+
+}
+.sidebar-brand a {
+    color: #ddd;
+}
+.sidebar-brand a:hover {
+    color: #fff;
+    text-decoration: none;
+}
+.dropdown-header {
+    text-align: center;
+    font-size: 1em;
+    color: #ddd;
+    background:#212531;
+    background: linear-gradient(to right bottom, #2f3441 50%, #212531 50%);
+}
+.sidebar-nav .dropdown-menu {
+    position: relative;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    border-radius: 0;
+    border: none;
+    background-color: #222;
+    box-shadow: none;
+}
+.dropdown-menu.show {
+    top: 0;
+}
+/*Fontawesome icons*/
+.nav.sidebar-nav li a::before {
+    font-family: fontawesome;
+    content: "\f12e";
+    vertical-align: baseline;
+    display: inline-block;
+    padding-right: 5px;
+}
+a[id*="#new"]::before {
+  content: "\f015"  !important;
+}
+a[id*="#source"]::before {
+  content: "\f121" !important;
+}
+a[id*="#events"]::before {
+  content: "\f073" !important;
+}
+a[href*="#events"]::before {
+  content: "\f073" !important;
+}
+a[id*="#group"]::before {
+  content: "\f0c0" !important;
+}
+a[href*="#predict"]::before {
+  content: "\f0d0" !important;
+}
+a[id*="#h"]::before {
+  content: "\f05d" !important;
+}
+a[id*="#l"]::before {
+  content: "\f05d" !important;
+}
+a[id*="#c"]::before {
+  content: "\f05d" !important;
+}
+a[id*="#d"]::before {
+  content: "\f05d" !important;
+}
+a[id*="#co"]::before {
+  content: "\f05d" !important;
+}
+
+a[id*="#t"]::before {
+  content: "\f05d" !important;
+}
+a[id*="#k"]::before {
+  content: "\f05d" !important;
+}
+a[id*="#b"]::before {
+  content: "\f05d" !important;
+}
+
+a[id*="#services"]::before {
+  content: "\f013" !important;
+}
+a[href*="#contact"]::before {
+  content: "\f086" !important;
+}
+a[href*="#followme"]::before {
+  content: "\f099" !important;
+  color: #0084b4;
+}
+/*-------------------------------*/
+/*       Hamburger-Cross         */
+/*-------------------------------*/
+
+.hamburger {
+  position: fixed;
+  top: 20px;
+  z-index: 999;
+  display: block;
+  width: 32px;
+  height: 32px;
+  margin-left: 15px;
+  background: rgb(255,255,255);
+  border: none;
+}
+.hamburger:hover,
+.hamburger:focus,
+.hamburger:active {
+  outline: none;
+}
+.hamburger.is-closed:before {
+  content: '';
+  display: block;
+  width: 100px;
+  font-size: 14px;
+  color: #fff;
+  line-height: 32px;
+  text-align: center;
+  opacity: 0;
+  -webkit-transform: translate3d(0,0,0);
+  -webkit-transition: all .35s ease-in-out;
+}
+.hamburger.is-closed:hover:before {
+  opacity: 1;
+  display: block;
+  -webkit-transform: translate3d(-100px,0,0);
+  -webkit-transition: all .35s ease-in-out;
+}
+
+.hamburger.is-closed .hamb-top,
+.hamburger.is-closed .hamb-middle,
+.hamburger.is-closed .hamb-bottom,
+.hamburger.is-open .hamb-top,
+.hamburger.is-open .hamb-middle,
+.hamburger.is-open .hamb-bottom {
+  position: absolute;
+  left: 0;
+  height: 4px;
+  width: 100%;
+}
+.hamburger.is-closed .hamb-top,
+.hamburger.is-closed .hamb-middle,
+.hamburger.is-closed .hamb-bottom {
+  background-color: #1a1a1a;
+}
+.hamburger.is-closed .hamb-top {
+  top: 5px;
+  -webkit-transition: all .35s ease-in-out;
+}
+.hamburger.is-closed .hamb-middle {
+  top: 50%;
+  margin-top: -2px;
+}
+.hamburger.is-closed .hamb-bottom {
+  bottom: 5px;
+  -webkit-transition: all .35s ease-in-out;
+}
+
+.hamburger.is-closed:hover .hamb-top {
+  top: 0;
+  -webkit-transition: all .35s ease-in-out;
+}
+.hamburger.is-closed:hover .hamb-bottom {
+  bottom: 0;
+  -webkit-transition: all .35s ease-in-out;
+}
+.hamburger.is-open .hamb-top,
+.hamburger.is-open .hamb-middle,
+.hamburger.is-open .hamb-bottom {
+  background-color: #1a1a1a;
+}
+.hamburger.is-open .hamb-top,
+.hamburger.is-open .hamb-bottom {
+  top: 50%;
+  margin-top: -2px;
+}
+.hamburger.is-open .hamb-top {
+  -webkit-transform: rotate(45deg);
+  -webkit-transition: -webkit-transform .2s cubic-bezier(.73,1,.28,.08);
+}
+.hamburger.is-open .hamb-middle { display: none; }
+.hamburger.is-open .hamb-bottom {
+  -webkit-transform: rotate(-45deg);
+  -webkit-transition: -webkit-transform .2s cubic-bezier(.73,1,.28,.08);
+}
+.hamburger.is-open:before {
+  content: '';
+  display: block;
+  width: 100px;
+  font-size: 14px;
+  color: #fff;
+  line-height: 32px;
+  text-align: center;
+  opacity: 0;
+  -webkit-transform: translate3d(0,0,0);
+  -webkit-transition: all .35s ease-in-out;
+}
+.hamburger.is-open:hover:before {
+  opacity: 1;
+  display: block;
+  -webkit-transform: translate3d(-100px,0,0);
+  -webkit-transition: all .35s ease-in-out;
+}
+
+/*-------------------------------*/
+/*            Overlay            */
+/*-------------------------------*/
+
+.overlay {
+    position: fixed;
+    display: none;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(250,250,250,.8);
+    z-index: 1;
+}
+
+</style>
+</head>
+<body>
+
+
+<div id="wrapper">
+   <div class="overlay"></div>
+
+        <!-- Sidebar -->
+    <nav class="navbar navbar-inverse fixed-top" id="sidebar-wrapper" role="navigation">
+     <ul class="nav sidebar-nav">
+       <div class="sidebar-header">
+       <div class="sidebar-brand" >
+         <a href="/home" >Multiple Disease Predictor</a></div></div>
+       <li><a href="/home" id="#new">Home</a></li>
+       <li><a href="https://www.kaggle.com/rajghadi/be-project/edit" id="#source">Source Code</a></li>
+
+       <li><a href="/team" id="#group">Team</a></li>
+       <li class="dropdown">
+       <a href="#predict" class="dropdown-toggle"  data-toggle="dropdown">Predict <span class="caret"></span></a>
+     <ul class="dropdown-menu animated fadeInLeft" role="menu">
+      <div class="dropdown-header">Predict Other Diseases</div>
+      <li><a href="/page" id="#h">Heart Disease</a></li>
+      <li><a href="/liver" id="#l">Liver Diseases</a></li>
+      <li><a href="/cancer" id="#c">Cancer</a></li>
+      <li><a href="/sugar" id="#d">Diabetes</a></li>
+      <li><a href="/covid" id="#co">Covid</a></li>
+      <li><a href="/tb" id="#t">tuberculosis</a></li>
+      <li><a href="/brain" id="#b">Brain Tumor</a></li>
+      <li><a href="/kidney" id="#k">Kidney</a></li>
+      </ul>
+      </li>
+      <li><a href="/services" id="#services">Services</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="#followme">Follow me</a></li>
+      </ul>
+  </nav>
+        <!-- /#sidebar-wrapper -->
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <button type="button" class="hamburger animated fadeInLeft is-closed" data-toggle="offcanvas">
+                <span class="hamb-top"></span>
+    			<span class="hamb-middle"></span>
+				<span class="hamb-bottom"></span>
+            </button>
+            <div class="container">
+                <div class="row">
+                    <div class="container-fluid">
+
+                            <div id="demo" class="carousel slide" data-ride="carousel">
+  <ul class="carousel-indicators">
+    <li data-target="#demo" data-slide-to="0" class="active"></li>
+    <li data-target="#demo" data-slide-to="1"></li>
+    <li data-target="#demo" data-slide-to="2"></li>
+  </ul>
+  <div class="carousel-inner" >
+    <div class="carousel-item active" >
+      <img src="static/images/10.jpg" alt="Los Angeles" width="100%" height="400px">
+      <div class="carousel-caption" style="color:rgb(255,255,255);background-color:rgb(0,0,0);opacity:0.8;padding:8%;margin-bottom:6%;" >
+        <h3>What is Parkinson’s Disease?</h3>
+          <p><a href="#p1" class="text-white">click here to see</a></p>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <img src="static/images/12.jpg" alt="Chicago" width="100%" height="400">
+      <div class="carousel-caption" style="color:rgb(255,255,255);background-color:rgb(0,0,0);opacity:0.8;padding:8%;margin-bottom:4%;">
+        <h3>What are Symptoms of Parkinson’s Disease?</h3>
+       <p><a href="#p2" class="text-white">click here to see</a></p>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <img src="static/images/7.jpg" alt="New York" width="100%" height="400">
+      <div class="carousel-caption" style="color:rgb(255,255,255);background-color:rgb(0,0,0);opacity:0.8;padding:8%;margin-bottom:3%;">
+        <h3>What are the Causes, Risk factors & Complications of Parkinson’s Disease?</h3>
+        <p><a href="#p3" class="text-white">click here to see</a></p>
+      </div>
+    </div>
+  </div>
+  <a class="carousel-control-prev" href="#demo" data-slide="prev">
+    <span class="carousel-control-prev-icon"></span>
+  </a>
+  <a class="carousel-control-next" href="#demo" data-slide="next">
+    <span class="carousel-control-next-icon"></span>
+  </a>
+</div>
+                        <!-- jumbotron-->
+            <div class="container" style="background-color:1B1B1B;color:rgb(255,255,255); ">
+               <center>
+                <h2 style="padding-top:7%;">Implementation of Detecting Parkinson’s Disease using  Machine Learning</h2>
+
+
+                       <img src="static/images/8.jpg" alt="collage logo"  style="padding-top:3%;">
+
+                 <h5  style="color:rgb(255,255,255);padding-bottom:30px;padding-top:30px;">K J Somaiya Institute of Engineering and Information Technology</h5>
+            </center>
+           </div>
+
+                        <!-- form -->
+
+    <div class="container">
+        <center>
+          <form action="{{url_for('predict')}}" method="post"  class="form-row container " style="background-color:000033;color:rgb(255,255,255);" id="form" >
+           <h3  class="container" style="padding-bottom:50px;padding-top:50px;">Enter correct  details Below</h3>
+           <br>
+        <div class="slidecontainer">
+              <input class="slider" min="0" max="1000" step="1" value="" type="range" class="form-control-range" id="MDVP:Fo(Hz)", name="MDVP:Fo(Hz)" placeholder="MDVP:Fo(Hz)">
+            <p>MDVP:Fo(Hz): <span id="demo22"></span></p>
+        </div>
+        <div class="slidecontainer">
+             <input class="slider" min="0" max="1000" step="1" value="" type="range" class="form-control-range" id="MDVP:Fhi(Hz)", name="MDVP:Fhi(Hz)" placeholder="MDVP:Fhi(Hz)">
+            <p>MDVP:Fhi(Hz): <span id="demo21"></span></p>
+        </div>
+
+
+        <div class="slidecontainer">
+             <input class="slider" min="0" max="1000" step="1" value="" type="range" class="form-control-range" id="MDVP:Flo(Hz)", name="MDVP:Flo(Hz)" placeholder="MDVP:Flo(Hz)">
+            <p>MDVP:Flo(Hz): <span id="demo20"></span></p>
+        </div>
+        <div class="slidecontainer">
+           <input class="slider" min="0.0000001" max="5" step="0.0000010" value="" type="range" class="form-control-range" id="MDVP:Jitter(%)", name="MDVP:Jitter(%)" placeholder="MDVP:Jitter(%)">
+            <p>MDVP:Jitter(%): <span id="demo19"></span></p>
+       </div>
+        <div class="slidecontainer">
+              <input class="slider" min="0.0000001" max="5" step="0.0000010" value="" type="range" class="form-control-range" id="MDVP:Jitter(Abs)", name="MDVP:Jitter(Abs)" placeholder="MDVP:Jitter(Abs)">
+            <p>MDVP:Jitter(Abs): <span id="demo18"></span></p>
+        </div>
+        <div class="slidecontainer">
+             <input class="slider" min="0.0000001" max="5" step="0.0000010" value=""  type="range" class="form-control-range" id="MDVP:RAP", name="MDVP:RAP" placeholder="MDVP:RAP">
+            <p>MDVP:RAP: <span id="demo17"></span></p>
+        </div>
+        <div class="slidecontainer">
+             <input class="slider" min="0.0000001" max="5" step="0.0000010" value="" type="range" class="form-control-range" id="MDVP:PPQ", name="MDVP:PPQ" placeholder="MDVP:PPQ">
+            <p>MDVP:PPQ: <span id="demo16"></span></p>
+        </div>
+
+
+        <div class="slidecontainer">
+           <input class="slider" min="0.0000001" max="5" step="0.0000010" value="" type="range" class="form-control-range" id="Jitter:DDP", name="Jitter:DDP" placeholder="Jitter:DDP">
+            <p>Jitter:DDP: <span id="demo15"></span></p>
+       </div>
+       <div class="slidecontainer">
+              <input class="slider" min="0.0000001" max="5" step="0.0000010" value="" type="range" class="form-control-range" id="MDVP:Shimmer", name="MDVP:Shimmer" placeholder="MDVP:Shimmer">
+           <p>MDVP:Shimmer: <span id="demo14"></span></p>
+       </div>
+        <div class="slidecontainer">
+             <input class="slider" min="0.0000001" max="5" step="0.0000010" value="" type="range" class="form-control-range" id="MDVP:Shimmer(dB)", name="MDVP:Shimmer(dB)" placeholder="MDVP:Shimmer(dB)">
+            <p>MDVP:Shimmer(dB): <span id="demo13"></span></p>
+        </div>
+        <div class="slidecontainer">
+             <input class="slider" min="0.0000001" max="5" step="0.0000010" value="" type="range" class="form-control-range" id="Shimmer:APQ3", name="Shimmer:APQ3" placeholder="Shimmer:APQ3">
+            <p>Shimmer:APQ3: <span id="demo12"></span></p>
+        </div>
+        <div class="slidecontainer">
+           <input class="slider" min="0.0000001" max="5" step="0.0000010" value="" type="range" class="form-control-range" id="Shimmer:APQ5", name="Shimmer:APQ5" placeholder="Shimmer:APQ5">
+            <p>Shimmer:APQ5: <span id="demo11"></span></p>
+       </div>
+
+
+        <div class="slidecontainer">
+              <input class="slider" min="0.0000001" max="5" step="0.0000010" value="" type="range" class="form-control-range" id="MDVP:APQ", name="MDVP:APQ" placeholder="MDVP:APQ">
+            <p>MDVP:APQ: <span id="demo10"></span></p>
+        </div>
+        <div class="slidecontainer">
+             <input class="slider" min="0.0000001" max="5" step="0.0000010" value="" type="range" class="form-control-range" id="Shimmer:DDA", name="Shimmer:DDA" placeholder="Shimmer:DDA">
+            <p>Shimmer:DDA: <span id="demo9"></span></p>
+        </div>
+        <div class="slidecontainer">
+             <input class="slider" min="0.0000001" max="5" step="0.0000010" value="" type="range" class="form-control-range" id="NHR", name="NHR" placeholder="NHR">
+            <p>NHR: <span id="demo8"></span></p>
+        </div>
+        <div class="slidecontainer">
+           <input class="slider" min="0.0000001" max="5" step="0.0000010" value="" type="range" class="form-control-range" id="HNR", name="HNR" placeholder="HNR">
+            <p>HNR: <span id="demo7"></span></p>
+       </div>
+        <div class="slidecontainer">
+             <input class="slider" min="0.0000001" max="5" step="0.0000010" value="" type="range" class="form-control-range" id="RPDE", name="RPDE" placeholder="RPDE">
+            <p>RPDE: <span id="demo6"></span></p>
+        </div>
+
+
+        <div class="slidecontainer">
+             <input class="slider" min="0.0000001" max="5" step="0.0000010" value="" type="range" class="form-control-range" id="DFA", name="DFA" placeholder="DFA">
+            <p>DFA: <span id="demo5"></span></p>
+        </div>
+        <div class="slidecontainer">
+           <input class="slider" min="0.0000001" max="5" step="0.0000010" value="" type="range" class="form-control-range" id="spread1", name="spread1" placeholder="spread1">
+            <p>spread1: <span id="demo4"></span></p>
+       </div>
+       <div class="slidecontainer">
+              <input class="slider" min="0.0000001" max="5" step="0.0000010" value="" type="range" class="form-control-range" id="spread2", name="spread2" placeholder="spread2">
+           <p>spread2: <span id="demo3"></span></p>
+        </div>
+        <div class="slidecontainer">
+             <input class="slider" min="0.0000001" max="5" step="0.0000010" value="" type="range" class="form-control-range" id="D2", name="D2" placeholder="D2">
+            <p>D2: <span id="demo2"></span></p>
+        </div>
+
+        <div class="slidecontainer">
+             <input class="slider" min="0.0000001" max="5" step="0.0000010" value="" type="range" class="form-control-range" id="PPE", name="PPE" placeholder="PPE">
+            <p>PPE: <span id="demo1"></span></p>
+        </div>
+
+
+      <br>
+
+
+            <button type="submit" class="btn btn-outline-primary btn-block" style="padding-top:10px;padding-bottom:10px;margin-top:50px;margin-bottom:50px;">Predict</button>
+
+
+
+    </form>
+        </center>
+
+    </div>
+
+                         <div class="container" style="background-color:rgb(37,116,169);padding:9%;color:rgb(255,255,255);" id="p1">
+            <h1>What is Parkinson’s Disease?</h1>
+            <p>Parkinson's disease is a progressive nervous system disorder that affects movement. Symptoms start gradually, sometimes starting with a barely noticeable tremor in just one hand. Tremors are common, but the disorder also commonly causes stiffness or slowing of movement.</p>
+            <br><center><img src="static/images/1.jpg" alt="Chicago" width="90%" height="auto"></center><br>
+            <p>In the early stages of Parkinson's disease, your face may show little or no expression. Your arms may not swing when you walk. Your speech may become soft or slurred. Parkinson's disease symptoms worsen as your condition progresses over time.</p>
+            <p>Although Parkinson's disease can't be cured, medications might significantly improve your symptoms. Occasionally, your doctor may suggest surgery to regulate certain regions of your brain and improve your symptoms.</p>
+<br><br>
+             <h1 id="p2">What are Symptoms of Parkinson’s Disease?</h1>
+
+
+<p>Parkinson's disease signs and symptoms can be different for everyone. Early signs may be mild and go unnoticed. Symptoms often begin on one side of your body and usually remain worse on that side, even after symptoms begin to affect both sides.</p>
+<br><center><img src="static/images/13.jpg" alt="Chicago" width="50%" height="auto"></center><br>
+<p>Parkinson's signs and symptoms may include:</p>
+
+<ul>
+    <li><b>Tremor.</b> A tremor, or shaking, usually begins in a limb, often your hand or fingers. You may rub your thumb and forefinger back and forth, known as a pill-rolling tremor. Your hand may tremble when it's at rest.</li>
+    <li><b>Slowed movement (bradykinesia).</b> Over time, Parkinson's disease may slow your movement, making simple tasks difficult and time-consuming. Your steps may become shorter when you walk. It may be difficult to get out of a chair. You may drag your feet as you try to walk.</li>
+    <li><b>Rigid muscles. </b>Muscle stiffness may occur in any part of your body. The stiff muscles can be painful and limit your range of motion.</li>
+    <li><b>Impaired posture and balance.</b> Your posture may become stooped, or you may have balance problems as a result of Parkinson's disease.</li>
+    <li><b>Loss of automatic movements.</b> You may have a decreased ability to perform unconscious movements, including blinking, smiling or swinging your arms when you walk.</li>
+    <li><b>Speech changes.</b> You may speak softly, quickly, slur or hesitate before talking. Your speech may be more of a monotone rather than have the usual inflections.</li>
+    <li><b>Writing changes.</b> It may become hard to write, and your writing may appear small.</li>
+</ul>
+
+            <br><br>
+<h1 id="p3">Causes</h1>
+            <p>In Parkinson's disease, certain nerve cells (neurons) in the brain gradually break down or die. Many of the symptoms are due to a loss of neurons that produce a chemical messenger in your brain called dopamine. When dopamine levels decrease, it causes abnormal brain activity, leading to impaired movement and other symptoms of Parkinson's disease.</p>
+
+            <p>The cause of Parkinson's disease is unknown, but several factors appear to play a role, including:</p>
+
+<ul>
+    <li>Genes. Researchers have identified specific genetic mutations that can cause Parkinson's disease. But these are uncommon except in rare cases with many family members affected by Parkinson's disease.</li>
+    <br>However, certain gene variations appear to increase the risk of Parkinson's disease but with a relatively small risk of Parkinson's disease for each of these genetic markers.
+    <li>Environmental triggers. Exposure to certain toxins or environmental factors may increase the risk of later Parkinson's disease, but the risk is relatively small.</li>
+</ul>
+            <p>Researchers have also noted that many changes occur in the brains of people with Parkinson's disease, although it's not clear why these changes occur. These changes include:</p>
+<ul>
+    <li>The presence of Lewy bodies. Clumps of specific substances within brain cells are microscopic markers of Parkinson's disease. These are called Lewy bodies, and researchers believe these Lewy bodies hold an important clue to the cause of Parkinson's disease.</li>
+    <li>Alpha-synuclein found within Lewy bodies. Although many substances are found within Lewy bodies, scientists believe an important one is the natural and widespread protein called alpha-synuclein (a-synuclein). It's found in all Lewy bodies in a clumped form that cells can't break down. This is currently an important focus among Parkinson's disease researchers.</li>
+</ul>
+
+
+
+<br><br>
+
+
+
+<h1>Risk factors</h1>
+            <p>Risk factors for Parkinson's disease include:</p>
+<ul>
+    <li><b>Age.</b>  Young adults rarely experience Parkinson's disease. It ordinarily begins in middle or late life, and the risk increases with age. People usually develop the disease around age 60 or older.</li>
+    <li><b>Heredity.</b>  Having a close relative with Parkinson's disease increases the chances that you'll develop the disease. However, your risks are still small unless you have many relatives in your family with Parkinson's disease.</li>
+    <li><b>Sex.</b>  Men are more likely to develop Parkinson's disease than are women.</li>
+    <li><b>Exposure to toxins.</b> Ongoing exposure to herbicides and pesticides may slightly increase your risk of Parkinson's disease.</li>
+</ul>
+
+
+
+<br><br>
+<h1>Complications</h1>
+<p>Parkinson's disease is often accompanied by these additional problems, which may be treatable:</p>
+<ul>
+    Thinking difficulties. You may experience cognitive problems (dementia) and thinking difficulties. These usually occur in the later stages of Parkinson's disease. Such cognitive problems aren't very responsive to medications.</li>
+    <li><b>Depression and emotional changes.</b> You may experience depression, sometimes in the very early stages. Receiving treatment for depression can make it easier to handle the other challenges of Parkinson's disease.<br>You may also experience other emotional changes, such as fear, anxiety or loss of motivation. Doctors may give you medications to treat these symptoms.</li>
+    <li><b>Swallowing problems.</b> You may develop difficulties with swallowing as your condition progresses. Saliva may accumulate in your mouth due to slowed swallowing, leading to drooling.</li>
+    <li><b>Chewing and eating problems.</b> Late-stage Parkinson's disease affects the muscles in your mouth, making chewing difficult. This can lead to choking and poor nutrition.</li>
+    <li><b>Sleep problems and sleep disorders.</b> People with Parkinson's disease often have sleep problems, including waking up frequently throughout the night, waking up early or falling asleep during the day.<br>People may also experience rapid eye movement sleep behavior disorder, which involves acting out your dreams. Medications may help your sleep problems.</li>
+    <li><b>Bladder problems.</b> Parkinson's disease may cause bladder problems, including being unable to control urine or having difficulty urinating.</li>
+    <li><b>Constipation.</b> Many people with Parkinson's disease develop constipation, mainly due to a slower digestive tract.</li>
+</ul>
+
+
+<p>You may also experience:</p>
+<ul>
+    <li><b>Blood pressure changes.</b> You may feel dizzy or lightheaded when you stand due to a sudden drop in blood pressure (orthostatic hypotension).</li>
+    <li><b>Smell dysfunction.</b> You may experience problems with your sense of smell. You may have difficulty identifying certain odors or the difference between odors.</li>
+    <li><b>Fatigue.</b> Many people with Parkinson's disease lose energy and experience fatigue, especially later in the day. The cause isn't always known.</li>
+    <li><b>Pain.</b> Some people with Parkinson's disease experience pain, either in specific areas of their bodies or throughout their bodies.</li>
+    <li><b>Sexual dysfunction.</b> Some people with Parkinson's disease notice a decrease in sexual desire or performance.</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+        </div>
+
+
+          <!-- footer-->
+             <footer class="bg-dark text-center text-white" id="contact">
+                                <!-- Grid container -->
+                                       <div class="container p-4 pb-0" >
+    <!-- Section: Social media -->
+                                    <section class="mb-4" >
+                                        <p id="followme">Social Networks</p>
+      <!-- Facebook -->
+                        <a class="btn btn-outline-light btn-floating m-1" href="https://www.facebook.com/raj.ghadi.58511/" role="button" style=""><i class="fa fa-facebook-f"></i></a>
+
+      <!-- Twitter -->
+      <a class="btn btn-outline-light btn-floating m-1" href="https://mobile.twitter.com/RajGhadi14" role="button"><i class="fa fa-twitter"></i></a>
+
+      <!-- Google -->
+      <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i class="fa fa-google"></i></a>
+
+      <!-- Instagram -->
+      <a class="btn btn-outline-light btn-floating m-1" href="https://www.instagram.com/rajghadi1/" role="button"><i class="fa fa-instagram"></i></a>
+
+      <!-- Linkedin -->
+      <a class="btn btn-outline-light btn-floating m-1" href="https://www.linkedin.com/in/raj-ghadi/" role="button"><i class="fa fa-linkedin"></i></a>
+
+      <!-- Github -->
+      <a class="btn btn-outline-light btn-floating m-1" href="https://github.com/rajghadi1" role="button"><i class="fa fa-github"></i></a>
+    </section>
+                       <!-- Section: Social media -->
+                                           </div>
+                 <div >
+                     <p id="#contact">Contact</p>
+                     <section class="mb-4" >
+                            <a><i class="fa fa-phone"></i> &nbsp; &nbsp; +91 8928669402</a><br>
+                            <a><i class="fa fa-envelope"></i>  &nbsp; &nbsp;r.ghadi@somaiya.edu</a>
+                     </section>
+                 </div>
+                                       <!-- Grid container -->
+
+                                    <!-- Copyright -->
+                                  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+                                                        <a class="text-white" href="#demo">Parkinson’s Disease Predication using Machine Learning</a>
+                                                             </div>
+                                 <!-- Copyright -->
+                        </footer>
+
+
+
+
+
+
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+
+
+
+
+
+</body>
+</html>
+<script>
+    $(document).ready(function () {
+  var trigger = $('.hamburger'),
+      overlay = $('.overlay'),
+     isClosed = false;
+
+    trigger.click(function () {
+      hamburger_cross();
+    });
+
+    function hamburger_cross() {
+
+      if (isClosed == true) {
+        overlay.hide();
+        trigger.removeClass('is-open');
+        trigger.addClass('is-closed');
+        isClosed = false;
+      } else {
+        overlay.show();
+        trigger.removeClass('is-closed');
+        trigger.addClass('is-open');
+        isClosed = true;
+      }
+  }
+
+  $('[data-toggle="offcanvas"]').click(function () {
+        $('#wrapper').toggleClass('toggled');
+  });
+});
+</script>
+<script>
+var slider1 = document.getElementById("PPE");
+var output1 = document.getElementById("demo1");
+output1.innerHTML = slider1.value; // Display the default slider value
+
+// Update the current slider value (each time you drag the slider handle)
+slider1.oninput = function() {
+  output1.innerHTML = this.value;
+}
+</script>
+
+<script>
+var slider2 = document.getElementById("D2");
+var output2 = document.getElementById("demo2");
+output2.innerHTML = slider2.value; // Display the default slider value
+
+// Update the current slider value (each time you drag the slider handle)
+slider2.oninput = function() {
+  output2.innerHTML = this.value;
+}
+</script>
+
+<script>
+var slider3 = document.getElementById("spread2");
+var output3 = document.getElementById("demo3");
+output3.innerHTML = slider3.value; // Display the default slider value
+
+// Update the current slider value (each time you drag the slider handle)
+slider3.oninput = function() {
+  output3.innerHTML = this.value;
+}
+</script>
+
+<script>
+var slider4 = document.getElementById("spread1");
+var output4 = document.getElementById("demo4");
+output4.innerHTML = slider4.value; // Display the default slider value
+
+// Update the current slider value (each time you drag the slider handle)
+slider4.oninput = function() {
+  output4.innerHTML = this.value;
+}
+</script>
+<script>
+var slider5 = document.getElementById("DFA");
+var output5= document.getElementById("demo5");
+output5.innerHTML = slider5.value; // Display the default slider value
+
+// Update the current slider value (each time you drag the slider handle)
+slider5.oninput = function() {
+  output5.innerHTML = this.value;
+}
+</script>
+
+<script>
+var slider6 = document.getElementById("RPDE");
+var output6 = document.getElementById("demo6");
+output6.innerHTML = slider6.value; // Display the default slider value
+
+// Update the current slider value (each time you drag the slider handle)
+slider6.oninput = function() {
+  output6.innerHTML = this.value;
+}
+</script>
+
+<script>
+var slider7 = document.getElementById("HNR");
+var output7 = document.getElementById("demo7");
+output7.innerHTML = slider7.value; // Display the default slider value
+
+// Update the current slider value (each time you drag the slider handle)
+slider7.oninput = function() {
+  output7.innerHTML = this.value;
+}
+</script>
+
+<script>
+var slider8 = document.getElementById("NHR");
+var output8 = document.getElementById("demo8");
+output8.innerHTML = slider8.value; // Display the default slider value
+
+// Update the current slider value (each time you drag the slider handle)
+slider8.oninput = function() {
+  output8.innerHTML = this.value;
+}
+</script>
+
+<script>
+var slider9 = document.getElementById("Shimmer:DDA");
+var output9 = document.getElementById("demo9");
+output9.innerHTML = slider9.value; // Display the default slider value
+
+// Update the current slider value (each time you drag the slider handle)
+slider9.oninput = function() {
+  output9.innerHTML = this.value;
+}
+</script>
+
+
+<script>
+var slider10 = document.getElementById("MDVP:APQ");
+var output10 = document.getElementById("demo10");
+output10.innerHTML = slider10.value; // Display the default slider value
+
+// Update the current slider value (each time you drag the slider handle)
+slider10.oninput = function() {
+  output10.innerHTML = this.value;
+}
+</script>
+
+<script>
+var slider11 = document.getElementById("Shimmer:APQ5");
+var output11 = document.getElementById("demo11");
+output11.innerHTML = slider11.value; // Display the default slider value
+
+// Update the current slider value (each time you drag the slider handle)
+slider11.oninput = function() {
+  output11.innerHTML = this.value;
+}
+</script>
+
+<script>
+var slider12 = document.getElementById("Shimmer:APQ3");
+var output12 = document.getElementById("demo12");
+output12.innerHTML = slider12.value; // Display the default slider value
+
+// Update the current slider value (each time you drag the slider handle)
+slider12.oninput = function() {
+  output12.innerHTML = this.value;
+}
+</script>
+
+<script>
+var slider13 = document.getElementById("MDVP:Shimmer(dB)");
+var output13 = document.getElementById("demo13");
+output13.innerHTML = slider13.value; // Display the default slider value
+
+// Update the current slider value (each time you drag the slider handle)
+slider13.oninput = function() {
+  output13.innerHTML = this.value;
+}
+</script>
+
+<script>
+var slider14 = document.getElementById("MDVP:Shimmer");
+var output14 = document.getElementById("demo14");
+output14.innerHTML = slider14.value; // Display the default slider value
+
+// Update the current slider value (each time you drag the slider handle)
+slider14.oninput = function() {
+  output14.innerHTML = this.value;
+}
+</script>
+
+<script>
+var slider15 = document.getElementById("Jitter:DDP");
+var output15 = document.getElementById("demo15");
+output15.innerHTML = slider15.value; // Display the default slider value
+
+// Update the current slider value (each time you drag the slider handle)
+slider15.oninput = function() {
+  output15.innerHTML = this.value;
+}
+</script>
+
+<script>
+var slider16 = document.getElementById("MDVP:PPQ");
+var output16 = document.getElementById("demo16");
+output16.innerHTML = slider16.value; // Display the default slider value
+
+// Update the current slider value (each time you drag the slider handle)
+slider16.oninput = function() {
+  output16.innerHTML = this.value;
+}
+</script>
+
+<script>
+var slider17 = document.getElementById("MDVP:RAP");
+var output17 = document.getElementById("demo17");
+output17.innerHTML = slider17.value; // Display the default slider value
+
+// Update the current slider value (each time you drag the slider handle)
+slider17.oninput = function() {
+  output17.innerHTML = this.value;
+}
+</script>
+
+<script>
+var slider18 = document.getElementById("MDVP:Jitter(Abs)");
+var output18 = document.getElementById("demo18");
+output18.innerHTML = slider18.value; // Display the default slider value
+
+// Update the current slider value (each time you drag the slider handle)
+slider18.oninput = function() {
+  output18.innerHTML = this.value;
+}
+</script>
+
+<script>
+var slider19 = document.getElementById("MDVP:Jitter(%)");
+var output19 = document.getElementById("demo19");
+output19.innerHTML = slider19.value; // Display the default slider value
+
+// Update the current slider value (each time you drag the slider handle)
+slider19.oninput = function() {
+  output19.innerHTML = this.value;
+}
+</script>
+
+<script>
+var slider20 = document.getElementById("MDVP:Flo(Hz)");
+var output20 = document.getElementById("demo20");
+output20.innerHTML = slider20.value; // Display the default slider value
+
+// Update the current slider value (each time you drag the slider handle)
+slider20.oninput = function() {
+  output20.innerHTML = this.value;
+}
+</script>
+
+<script>
+var slider21 = document.getElementById("MDVP:Fhi(Hz)");
+var output21 = document.getElementById("demo21");
+output21.innerHTML = slider21.value; // Display the default slider value
+
+// Update the current slider value (each time you drag the slider handle)
+slider21.oninput = function() {
+  output21.innerHTML = this.value;
+}
+</script>
+
+<script>
+var slider22 = document.getElementById("MDVP:Fo(Hz)");
+var output22 = document.getElementById("demo22");
+output22.innerHTML = slider22.value; // Display the default slider value
+
+// Update the current slider value (each time you drag the slider handle)
+slider22.oninput = function() {
+  output22.innerHTML = this.value;
+}
+</script>
+
