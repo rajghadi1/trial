@@ -7,6 +7,7 @@ from keras.preprocessing.image import img_to_array
 from keras.models import load_model
 #from tensorflow.keras.models import load_model
 import os
+import io
 from werkzeug.utils import secure_filename
 
 app = Flask(__name__)
