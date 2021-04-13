@@ -1,6 +1,7 @@
 from flask import Flask, request, render_template, flash, redirect, url_for
 import numpy as np
 import pickle
+import tensorflow as tf
 from sklearn.preprocessing import MinMaxScaler
 from keras.preprocessing.image import load_img
 from keras.preprocessing.image import img_to_array
@@ -17,9 +18,11 @@ model3 = pickle.load(open('liver.pkl', 'rb'))
 model4=pickle.load(open("cancer.pkl",'rb'))
 model5=pickle.load(open("diabetes.pkl",'rb'))
 model7=pickle.load(open("kidneyPKL.pkl",'rb'))
-model9=load_model("model.h5")
-model6=load_model("tumor_model.h5")
-model8=load_model("tb_model.h5")
+
+with tf.device('/cpu:0'):
+    model9 = load_model('model.h5')
+    model6=load_model("tumor_model.h5")
+    model8=load_model("tb_model.h5")
 
 
 @app.route('/')
