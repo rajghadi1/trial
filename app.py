@@ -16,7 +16,7 @@ model3 = pickle.load(open('liver.pkl', 'rb'))
 model4=pickle.load(open("cancer.pkl",'rb'))
 model5=pickle.load(open("diabetes.pkl",'rb'))
 model7=pickle.load(open("kidneyPKL.pkl",'rb'))
-model9=load_model("model.h5")
+model9=load_model(os.path.join("model.h5"))
 model6=load_model("tumor_model.h5")
 model8=load_model("tb_model.h5")
 
