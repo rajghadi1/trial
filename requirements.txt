@@ -8,5 +8,4 @@ scipy>=0.15.1
 scikit-learn>=0.18
 pandas>=0.19
 
-pyreadline==2.1; platform_system == "Windows"
 tensorflow-cpu
