@@ -40,6 +40,6 @@ urllib3==1.25.9
 Werkzeug==1.0.1
 wrapt==1.12.1
 zipp==3.1.0
-h5py==3.1.0
+h5py==3.2.1
 keras==2.4.3
 tensorflow-cpu
