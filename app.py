@@ -22,7 +22,7 @@ model7=pickle.load(open("kidneyPKL.pkl",'rb'))
 
 with tf.device('/cpu:0'):
    
-    model6=keras.models.load_model("tumor_model.h5")
+    model6=load_model("tumor_model.h5")
     model8=load_model("tb_model.h5")
     #model9 = load_model('model.h5')
 
