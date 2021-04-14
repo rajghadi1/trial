@@ -9,8 +9,13 @@ from keras.models import load_model
 from tensorflow.keras.models import load_model
 import os
 import io
-os.environ["CUDA_VISIBLE_DEVICES"]="-1"
+#os.environ["CUDA_VISIBLE_DEVICES"]="-1"
 from werkzeug.utils import secure_filename
+os.environ["OMP_NUM_THREADS"] = “16”
+tf.config.threading.set_inter_op_parallelism_threads() 
+tf.config.threading.set_intra_op_parallelism_threads()
+tf.config.set_soft_device_placement(enabled)
+
 
 app = Flask(__name__)
 model = pickle.load(open('beproject.pkl', 'rb'))
