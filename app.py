@@ -5,16 +5,12 @@ import tensorflow as tf
 from sklearn.preprocessing import MinMaxScaler
 from keras.preprocessing.image import load_img
 from keras.preprocessing.image import img_to_array
-from keras.models import load_model
+#from keras.models import load_model
 from tensorflow.keras.models import load_model
 import os
 import io
 #os.environ["CUDA_VISIBLE_DEVICES"]="-1"
 from werkzeug.utils import secure_filename
-os.environ["OMP_NUM_THREADS"] = “16”
-tf.config.threading.set_inter_op_parallelism_threads() 
-tf.config.threading.set_intra_op_parallelism_threads()
-tf.config.set_soft_device_placement(enabled)
 
 
 app = Flask(__name__)
@@ -27,7 +23,7 @@ model7=pickle.load(open("kidneyPKL.pkl",'rb'))
 
 with tf.device('/cpu:0'):
    
-    model6=load_model("tumor_model.h5")
+    model6=load_model("tumor_model.h5", custom_objects=None, compile=True, options=None)
     model8=load_model("tb_model.h5")
     model9 = load_model('model.h5')
 
