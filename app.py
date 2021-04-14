@@ -23,9 +23,9 @@ model7=pickle.load(open("kidneyPKL.pkl",'rb'))
 
 with tf.device('/cpu:0'):
    
-    model6=load_model("tumor_model.h5", custom_objects=None, compile=True, options=None)
-    model8=load_model("tb_model.h5")
-    model9 = load_model('model.h5')
+    model6=load_model("tumor.pb")
+    model8=load_model("tb.pb")
+    model9 = load_model('covid.pb')
 
 @app.route('/')
 
