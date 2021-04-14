@@ -9,7 +9,7 @@ from keras.preprocessing.image import img_to_array
 from tensorflow.keras.models import load_model
 import os
 import io
-#os.environ["CUDA_VISIBLE_DEVICES"]="-1"
+os.environ["CUDA_VISIBLE_DEVICES"]="-1"
 from werkzeug.utils import secure_filename
 
 
