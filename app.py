@@ -24,7 +24,7 @@ with tf.device('/cpu:0'):
    
     model6=keras.models.load_model("tumor_model.h5")
     model8=load_model("tb_model.h5")
-    model9 = load_model('model.h5')
+    #model9 = load_model('model.h5')
 
 @app.route('/')
 
@@ -157,7 +157,7 @@ def pred_covid(xray):
 
 app.config['SECRET_KEY'] = '5791628bb0b13ce0c676dfde280ba245'
 
-@app.route('/covid')
+"""@app.route('/covid')
 def covid():
     return render_template('covid.html')
 
@@ -188,7 +188,7 @@ def resultP():
 
         return render_template('covidresult.html', pred_output=pred, user_image=file_path)
 
-        # check if the post request has the file part
+        # check if the post request has the file part"""
 
 @app.route('/kidney')
 def kidney():
