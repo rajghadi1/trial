@@ -9,7 +9,7 @@ from keras.preprocessing.image import img_to_array
 from tensorflow.keras.models import load_model
 import os
 import io
-os.environ["CUDA_VISIBLE_DEVICES"]="-1"
+#os.environ["CUDA_VISIBLE_DEVICES"]="-1"
 from werkzeug.utils import secure_filename
 
 
@@ -21,10 +21,10 @@ model4=pickle.load(open("cancer.pkl",'rb'))
 model5=pickle.load(open("diabetes.pkl",'rb'))
 model7=pickle.load(open("kidneyPKL.pkl",'rb'))
 
-with tf.device('/cpu:0'):
+#with tf.device('/cpu:0'):
     #model6=load_model("tumor")
     #model8=load_model("tb")
-    model9 = load_model('covid')
+    #model9 = load_model('covid')
 
 @app.route('/')
 
@@ -133,7 +133,7 @@ def resultC():
 
 
 
-
+"""
 
 def pred_covid(xray):
     test_image = load_img(xray, target_size=(200, 200), color_mode="grayscale")  # load image
@@ -186,7 +186,7 @@ def resultP():
         print("@@ Predicting class......")
         pred= pred_covid(xray=file_path)
 
-        return render_template('covidresult.html', pred_output=pred, user_image=file_path)
+        return render_template('covidresult.html', pred_output=pred, user_image=file_path)"""
 
         # check if the post request has the file part
 
