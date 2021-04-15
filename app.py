@@ -22,8 +22,8 @@ model5=pickle.load(open("diabetes.pkl",'rb'))
 model7=pickle.load(open("kidneyPKL.pkl",'rb'))
 
 with tf.device('/cpu:0'):
-    model6=load_model("tumor")
-    model8=load_model("tb")
+    #model6=load_model("tumor")
+    #model8=load_model("tb")
     model9 = load_model('covid')
 
 @app.route('/')
@@ -209,7 +209,7 @@ def resultK():
             return render_template('kidney.html', predict_text='Something went wrong')
 
 
-
+"""
 def pred_tumor(brain):
     test_image = load_img(brain, target_size=(200, 200), color_mode="grayscale")  # load image
     print("@@ Got Image for prediction")
@@ -320,7 +320,7 @@ def resultT():
 
         # check if the post request has the file part
 
-
+"""
 
 if __name__ == '__main__':
     app.run(debug=True)
