@@ -21,7 +21,7 @@ Keras-Applications==1.0.8
 Keras-Preprocessing==1.1.2
 Markdown==3.2.2
 MarkupSafe==1.1.1
-numpy==1.19.2
+numpy==1.22.2
 oauthlib==3.1.0
 opt-einsum==3.3.0
 pickle-mixin==1.0.2
@@ -36,12 +36,12 @@ scikit-learn>=0.23.1
 scipy>=1.5.1
 six>=1.15.0
 sklearn>=0.0
-urllib3==1.25.9
+urllib3==1.26.5
 Werkzeug==1.0.1
 wrapt==1.12.1
 zipp==3.1.0
 h5py==3.1.0
-keras==2.4.3
+keras==2.6.0rc3
 tensorflow-cpu
 termcolor>=1.1.0
 threadpoolctl>=2.1.0
