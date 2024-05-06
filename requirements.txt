@@ -37,7 +37,7 @@ scipy>=1.5.1
 six>=1.15.0
 sklearn>=0.0
 urllib3==1.25.9
-Werkzeug==1.0.1
+Werkzeug==3.0.3
 wrapt==1.12.1
 zipp==3.1.0
 h5py==3.1.0
