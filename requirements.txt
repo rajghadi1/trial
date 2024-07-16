@@ -45,3 +45,4 @@ keras==2.4.3
 tensorflow-cpu
 termcolor>=1.1.0
 threadpoolctl>=2.1.0
+setuptools>=70.0.0 # not directly required, pinned by Snyk to avoid a vulnerability
